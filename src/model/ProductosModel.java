@@ -32,30 +32,30 @@ public class ProductosModel extends ProductosClass{
 	
 	public void loadData()
 	{
-//		this.CreateConnection();
-//		
-//		Statement st;
-//		try {
-//			st = this.con.createStatement();
-//			ResultSet rs = st.executeQuery("SELECT * FROM Films ");
-//
-//			while (rs.next()) // reads the table line by line
-//			{
-//				FilmsModel newF = new FilmsModel();
-//				newF.id=Integer.parseInt(rs.getString(1));
-//				newF.title=rs.getString(2);
-//				newF.year=Integer.parseInt(rs.getString(3));
-//				newF.director=rs.getInt(4);
-//				newF.poster=rs.getString(5);
-//				newF.IMDB=rs.getString(6);
-//				this.list.add(newF);
-//			}
-//	
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		this.disconnect();
+		this.CreateConnection();
+		
+		Statement st;
+		try {
+			st = this.con.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM Films ");
+
+			while (rs.next()) // reads the table line by line
+			{
+				ProductosModel newF = new ProductosModel();
+				newF.idProducto=Integer.parseInt(rs.getString(1));
+				newF.nombre=rs.getString(2);
+				newF.idCategoria=Integer.parseInt(rs.getString(3));
+				newF.precio=rs.getDouble(4);
+				newF.descripcion=rs.getString(5);
+				newF.imagen=rs.getString(6);
+				this.list.add(newF);
+			}
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.disconnect();
 	}
 	
 	

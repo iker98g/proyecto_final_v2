@@ -7,37 +7,38 @@ import java.sql.*;
 
 public class Connect {
 
-	// ---- variables ----- //
-	protected String driver = "com.mysql.jdbc.Driver";
-	protected String url = "jdbc:mysql://10.22.72.82/tienda_productos";
-	protected String userBbdd = "root";
-	protected String passBbdd = "";
-	protected Connection con = null;
-
+protected Connection con = null;
+	
 	public Connect() {
       	super();
-      	{
-            	try {
-                  	// ----- connecting procedure ----//
-                  	Class.forName(driver);
-                  	con = DriverManager.getConnection(url, userBbdd, passBbdd);
-
-            	} catch (Exception ex) {
-                  	con = null;
-            	}
-      	}
 	}
-
-	public Connection getConnection()
-	/*
-	 * this function return the connection itself
-	 */
-	{
-      	return this.con;
-	}
-
 	// ---------------------------------------------
+	public Connection CreateConnection()
+	{
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://10.22.72.82/tienda_productos";
+		String userBbdd = "root";
+		String passBbdd = "";
+		
+		
+        	try {
+              	// ----- connecting procedure ----//
+              	Class.forName(driver);
+              	this.con = DriverManager.getConnection(url, userBbdd, passBbdd);
+
+        	} catch (Exception ex) {
+              	con = null;
+        	}
+        	return this.con;
+  	
+	}
+	
 	public void disconnect() {
-      	this.con = null;
+      	try {
+			this.con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
