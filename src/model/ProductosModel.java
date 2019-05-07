@@ -5,20 +5,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import model.ProductosClass;
+import model.ProductoClass;
 
 
-public class ProductosModel extends ProductosClass{
-	private ArrayList<ProductosClass> list = new ArrayList<ProductosClass>();
+public class ProductosModel extends ProductoClass{
+	private ArrayList<ProductoClass> list = new ArrayList<ProductoClass>();
 //getters and setters
-	public ArrayList<ProductosClass> getList() {
+	public ArrayList<ProductoClass> getList() {
 		return list;
 	}
 
-	public void setList(ArrayList<ProductosClass> list) {
+	public void setList(ArrayList<ProductoClass> list) {
 		this.list = list;
 	}
-
+//Constructors
 	public ProductosModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -60,31 +60,3 @@ public class ProductosModel extends ProductosClass{
 	
 	
 }
-
-
-
-
-
-	
-	
-//
-//	//----------Constructors
-//	public FilmsModel() {
-//		super();
-//	}
-//
-//	public FilmsModel(int id, String title, int year, int director, String poster, String iMDB,
-//			ArrayList<FilmsClass> list) {
-//		super(id, title, year, director, poster, iMDB);
-//		this.list = list;
-//	}
-//	//--------------getters and setters
-//	public ArrayList<FilmsClass> getList() {
-//		return list;
-//	}
-//
-//	public void setList(ArrayList<FilmsClass> list) {
-//		this.list = list;
-//	}
-//	//-----------methods
-//	
