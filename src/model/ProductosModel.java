@@ -37,18 +37,18 @@ public class ProductosModel extends ProductoClass{
 		Statement st;
 		try {
 			st = this.con.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM Films ");
+			ResultSet rs = st.executeQuery("SELECT * FROM productos ");
 
 			while (rs.next()) // reads the table line by line
 			{
-				ProductosModel newF = new ProductosModel();
-				newF.idProducto=Integer.parseInt(rs.getString(1));
-				newF.nombre=rs.getString(2);
-				newF.idCategoria=Integer.parseInt(rs.getString(3));
-				newF.precio=rs.getDouble(4);
-				newF.descripcion=rs.getString(5);
-				newF.imagen=rs.getString(6);
-				this.list.add(newF);
+				ProductosModel newP = new ProductosModel();
+				newP.idProducto=Integer.parseInt(rs.getString(1));
+				newP.nombre=rs.getString(2);
+				newP.idCategoria=Integer.parseInt(rs.getString(3));
+				newP.precio=rs.getDouble(4);
+				newP.descripcion=rs.getString(5);
+				newP.imagen=rs.getString(6);
+				this.list.add(newP);
 			}
 	
 		} catch (SQLException e) {
@@ -57,6 +57,4 @@ public class ProductosModel extends ProductoClass{
 		}
 		this.disconnect();
 	}
-	
-	
 }
