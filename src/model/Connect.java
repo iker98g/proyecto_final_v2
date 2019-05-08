@@ -16,7 +16,7 @@ protected Connection con = null;
 	public Connection CreateConnection()
 	{
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://10.22.72.82/tienda_productos";
+		String url = "jdbc:mysql://10.22.72.80/tienda_productos";
 		String userBbdd = "root";
 		String passBbdd = "";
 		
@@ -25,9 +25,11 @@ protected Connection con = null;
               	// ----- connecting procedure ----//
               	Class.forName(driver);
               	this.con = DriverManager.getConnection(url, userBbdd, passBbdd);
+              	System.out.println("le llegan datos");
 
         	} catch (Exception ex) {
               	con = null;
+              	System.out.println("no va");
         	}
         	return this.con;
   	
@@ -36,8 +38,10 @@ protected Connection con = null;
 	public void disconnect() {
       	try {
 			this.con.close();
+			System.out.println("ni idea que es esto");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println("que pasta pasando");
 			e.printStackTrace();
 		}
 	}
