@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import model.ProductoClass;
 
 
@@ -56,5 +58,28 @@ public class ProductosModel extends ProductoClass{
 			e.printStackTrace();
 		}
 		this.disconnect();
+	}
+
+	public String insertar() {
+		String mensaje="";
+		PreparedStatement pst;
+		try {
+			pst = (PreparedStatement) this.con.prepareStatement("INSERT INTO PRODUCTOS (nombre, idCategoria, precio, descripcion, imagen)"
+					+ " VALUES (?,?,?,?,?)");
+			
+			pst.setString(1, this.nombre);
+			pst.setInt(2, this.idCategoria);
+			pst.setDouble(3, this.precio);
+			pst.setString(4, this.descripcion);
+			pst.setString(5, this.imagen);
+			
+			pst.execute();
+			mensaje="Producto insertado en la BBDD";
+			
+		} catch (SQLException e) {
+			
+			mensaje=e.getMessage()+"No se ha podido insertar el producto en la BBDD";
+		}
+		return mensaje;
 	}
 }
