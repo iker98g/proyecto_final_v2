@@ -56,8 +56,8 @@ public class cCategorias extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 			
-//		out.print(jsonArray);
-//		out.flush();
+		out.print(jsonArray);
+		out.flush();
 //		
 
 		
