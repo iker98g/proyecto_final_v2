@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import model.CategoriasModel;
+import model.ProductosModel;
 
 /**
  * Servlet implementation class cCategorias
@@ -35,18 +38,27 @@ public class cCategorias extends HttpServlet {
 		
 		CategoriasModel myCategorias=new CategoriasModel();
 		myCategorias.loadData();
-		request.setAttribute("list", myCategorias.getList());
 		
-		String jsonString = JSONStringer.valueToString(myCategorias);
-		
+		//String jsonString = JSONStringer.valueToString(myProductos);
+		ArrayList<JSONObject> jsonArray=new ArrayList<JSONObject>();
+			
+ 		for (int i=0;i<myCategorias.getList().size();i++){
+ 			
+ 			JSONObject jsonObject=new JSONObject();
+ 			jsonObject.put("nombre", myCategorias.getList().get(i).getNombre());
+ 			
+ 			jsonArray.add(jsonObject);	
+ 		}		
+
 		PrintWriter out = response.getWriter();
-		
+	
 		response.setHeader("Access-Control-Allow-Origin","*"); //jsonp deia denean ez da behar
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
-		out.print(jsonString);
-		out.flush();
+			
+//		out.print(jsonArray);
+//		out.flush();
+//		
 
 		
 	}
