@@ -45,6 +45,7 @@ public class cCategorias extends HttpServlet {
  		for (int i=0;i<myCategorias.getList().size();i++){
  			
  			JSONObject jsonObject=new JSONObject();
+ 			jsonObject.put("idCategoria", myCategorias.getList().get(i).getIdCategoria());
  			jsonObject.put("nombre", myCategorias.getList().get(i).getNombre());
  			
  			jsonArray.add(jsonObject);	

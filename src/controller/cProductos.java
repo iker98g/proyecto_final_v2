@@ -16,16 +16,16 @@ import org.json.JSONStringer;
 import model.ProductosModel;
 
 /**
- * Servlet implementation class CProductos
+ * Servlet implementation class cProductos
  */
-@WebServlet("/CProductos")
-public class CProductos extends HttpServlet {
+@WebServlet("/cProductos")
+public class cProductos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CProductos() {
+    public cProductos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,6 +43,7 @@ public class CProductos extends HttpServlet {
  		for (int i=0;i<myProductos.getList().size();i++){
  			
  			JSONObject jsonObject=new JSONObject();
+ 			jsonObject.put("idProducto", myProductos.getList().get(i).getIdProducto());
  			jsonObject.put("nombre", myProductos.getList().get(i).getNombre());
  			jsonObject.put("idCategoria", myProductos.getList().get(i).getIdCategoria());
  			jsonObject.put("precio", myProductos.getList().get(i).isPrecio());
