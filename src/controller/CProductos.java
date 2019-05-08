@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,8 @@ public class CProductos extends HttpServlet {
 		ProductosModel myProductos=new ProductosModel();
 		myProductos.loadData();
 		
-		String jsonString = JSONStringer.valueToString(myProductos);
+		//String jsonString = JSONStringer.valueToString(myProductos);
+		ArrayList<JSONObject> jsonArray=new ArrayList<JSONObject>();
 			
  		for (int i=0;i<myProductos.getList().size();i++){
  			
@@ -46,7 +48,7 @@ public class CProductos extends HttpServlet {
  			jsonObject.put("idprecio", myProductos.getList().get(i).getIdCategoria());
  			jsonObject.put("Descripcion", myProductos.getList().get(i).getDescripcion());
  			jsonObject.put("imagen", myProductos.getList().get(i).getImagen());
- 			jsonString.add(jsonObject);	
+ 			jsonArray.add(jsonObject);	
  		}		
 
 		PrintWriter out = response.getWriter();
@@ -55,9 +57,9 @@ public class CProductos extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 			
-		out.print(jsonString);
-		out.flush();
-		
+//		out.print(jsonArray);
+//		out.flush();
+//		
 	}
 
 	/**
