@@ -45,8 +45,8 @@ public class CProductos extends HttpServlet {
  			JSONObject jsonObject=new JSONObject();
  			jsonObject.put("nombre", myProductos.getList().get(i).getNombre());
  			jsonObject.put("idCategoria", myProductos.getList().get(i).getIdCategoria());
- 			jsonObject.put("idprecio", myProductos.getList().get(i).getIdCategoria());
- 			jsonObject.put("Descripcion", myProductos.getList().get(i).getDescripcion());
+ 			jsonObject.put("precio", myProductos.getList().get(i).isPrecio());
+ 			jsonObject.put("descripcion", myProductos.getList().get(i).getDescripcion());
  			jsonObject.put("imagen", myProductos.getList().get(i).getImagen());
  			jsonArray.add(jsonObject);	
  		}		

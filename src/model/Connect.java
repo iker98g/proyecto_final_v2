@@ -16,7 +16,7 @@ protected Connection con = null;
 	public Connection CreateConnection()
 	{
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://10.22.72.80/tienda_productos";
+		String url = "jdbc:mysql://localhost:3306/tienda_productos";
 		String userBbdd = "root";
 		String passBbdd = "";
 		
@@ -38,10 +38,8 @@ protected Connection con = null;
 	public void disconnect() {
       	try {
 			this.con.close();
-			System.out.println("ni idea que es esto");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("que pasta pasando");
 			e.printStackTrace();
 		}
 	}
