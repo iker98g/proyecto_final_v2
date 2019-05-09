@@ -25,7 +25,7 @@ protected Connection con = null;
               	// ----- connecting procedure ----//
               	Class.forName(driver);
               	this.con = DriverManager.getConnection(url, userBbdd, passBbdd);
-              	System.out.println("le llegan datos");
+              	//System.out.println("le llegan datos");
 
         	} catch (Exception ex) {
               	con = null;

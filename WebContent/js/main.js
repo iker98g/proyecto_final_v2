@@ -3,19 +3,17 @@ $( document ).ready(function() {
     
     $.getJSON(enlace, function(response){
     	
-        console.log(response);
         var datos=response;
         
-        
+//        console.log("NOMBRE 0 : "+ datos[0].nombre);
+//        console.log("NOMBRE  1 : "+datos[1].nombre);
+        var htmlCode="";
         for (let i = 0; i < datos.length; i++) {
-        	var htmlCode="";
-           
-	        htmlCode += '<div class="container">';
-            htmlCode += '<div class="row">';
-            htmlCode += '<div class="col-md-4">';
-            htmlCode += '<div class="card mb-4 shadow-sm">';
-            htmlCode += '<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Producto</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>';
-            htmlCode += '<div class="card-body">';
+
+        	htmlCode += '<div class="col-2 p-2 mx-5">';
+        	
+        	htmlCode += '<img src="'+ datos[i].imagen +'" width="100%"/>';
+        	htmlCode += '<div class="card-body " >';
             htmlCode += '<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
             htmlCode += '<p class="card-text">Precio: '+ datos[i].precio +'</p>';
             htmlCode += '<div class="d-flex justify-content-between align-items-center">';
@@ -24,12 +22,11 @@ $( document ).ready(function() {
 	        htmlCode += '</div>';
             htmlCode += '</div>';
             htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            $('#container').html(htmlCode);
+            htmlCode += '</div>'; 
+
         }
+//        console.log("HTML : "+htmlCode);
+        $('#producto').html(htmlCode);
 
     });
 
