@@ -1,0 +1,36 @@
+body{
+    margin:0;
+    padding:0;
+    background-color: grey; 
+}
+.carrito{
+    color: white;
+    margin-right: 20px;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px; 
+}
+.aniadirCarrito{
+    
+}
+.carrito:hover{
+    background-color: white;
+    color: black;
+}
+.navbar-collapse{
+    justify-content: flex-end;
+}
+.barra-categorias{
+    width: 15%;
+    height: 1140px;
+    background-color: grey; 
+}
+.container{
+    margin-top: 8px;
+    background-color: red;
+}
+.main{
+    display:flex;
+    justify-content: space-around;
+    background-color: blue;
+}

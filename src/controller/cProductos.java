@@ -34,23 +34,26 @@ public class cProductos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		ProductosModel myProductos=new ProductosModel();
 		myProductos.loadData();
 		
-		//String jsonString = JSONStringer.valueToString(myProductos);
-		ArrayList<JSONObject> jsonArray=new ArrayList<JSONObject>();
-			
- 		for (int i=0;i<myProductos.getList().size();i++){
- 			
- 			JSONObject jsonObject=new JSONObject();
- 			jsonObject.put("idProducto", myProductos.getList().get(i).getIdProducto());
- 			jsonObject.put("nombre", myProductos.getList().get(i).getNombre());
- 			jsonObject.put("idCategoria", myProductos.getList().get(i).getIdCategoria());
- 			jsonObject.put("precio", myProductos.getList().get(i).isPrecio());
- 			jsonObject.put("descripcion", myProductos.getList().get(i).getDescripcion());
- 			jsonObject.put("imagen", myProductos.getList().get(i).getImagen());
- 			jsonArray.add(jsonObject);	
- 		}		
+		String jsonString = JSONStringer.valueToString(myProductos.getList());
+		
+//      En el caso que el objeto JSON sería reconstruido a partir de unos datos calculados
+//		ArrayList<JSONObject> jsonArray=new ArrayList<JSONObject>();
+//			
+// 		for (int i=0;i<myProductos.getList().size();i++){
+// 			
+// 			JSONObject jsonObject=new JSONObject();
+// 			jsonObject.put("c", myProductos.getList().get(i).getIdProducto());
+// 			jsonObject.put("nombre", myProductos.getList().get(i).getNombre());
+// 			jsonObject.put("idCategoria", myProductos.getList().get(i).getIdCategoria());
+// 			jsonObject.put("precio", myProductos.getList().get(i).isPrecio());
+// 			jsonObject.put("descripcion", myProductos.getList().get(i).getDescripcion());
+// 			jsonObject.put("imagen", myProductos.getList().get(i).getImagen());
+// 			jsonArray.add(jsonObject);	
+// 		}		
 
 		PrintWriter out = response.getWriter();
 	
@@ -58,9 +61,11 @@ public class cProductos extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 			
-		out.print(jsonArray);
+		out.print(jsonString);
 		out.flush();
-//		
+		
+		System.out.println("DATOS JSON : "+jsonString);
+		
 	}
 
 	/**
