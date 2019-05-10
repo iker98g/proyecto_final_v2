@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     var enlace="http://10.22.72.80:8080/Proyecto_v2/cProductos"
-    
+    	
     $.getJSON(enlace, function(response){
     	
         var datos=response;
@@ -10,34 +10,37 @@ $( document ).ready(function() {
         var htmlCode="";
         for (let i = 0; i < datos.length; i++) {
 
-        	htmlCode += '<div class="col-2 p-2 mx-5">';
+        	htmlCode += '<div class="col-2  mx-5">';
         	
-        	htmlCode += '<img src="'+ datos[i].imagen +'" width="100%"/>';
-        	htmlCode += '<div class="card-body " >';
-            htmlCode += '<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
-            htmlCode += '<p class="d-none" id="idProducto">'+ datos[i].idProducto +'</p>';
-            htmlCode += '<p class="card-text">Precio: '+ datos[i].precio +'</p>';
-            htmlCode += '<div class="d-flex justify-content-between align-items-center">';
-	        htmlCode += '<div class="btn-group " id="btn-carrito">';
-	        htmlCode += '<button type="button" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
-	        htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
+        	htmlCode +=	'<div class="card mb-4 shadow-sm">';
+        	htmlCode += 	'<img src="'+ datos[i].imagen +'" width="100%"/>';
+        	htmlCode += 	'<div class="card-body " >';
+            htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
+            htmlCode += 		'<p class="d-none">'+ datos[i].idProducto +'</p>';
+            htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'</p>';
+            htmlCode += 		'<div class="d-flex justify-content-between align-items-center">';
+	        htmlCode += 		'<div class="btn-group">';
+	        htmlCode += 			'<button type="button" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
+	        htmlCode += 		'</div>';
+            htmlCode += 		'</div>';
+            htmlCode += 		'</div>';
+            htmlCode += 	'</div>';
             htmlCode += '</div>'; 
 
         }
       //  console.log("HTML : "+htmlCode);
         $('#producto').html(htmlCode);
         
+        var arrayIds = [];
+        $('.btn-group').click(function(){
+        	 arrayIds[i] = $('.d-none').txt();
+        	
+        	i++;
+        	  console.log(arrayIds[i]); 	
+        });
     });
     
-    var arrayIds = [];
-    $('#btn-carrito').on(click, function(){
-    	//console.log(datos.idProductos);
-    	 arrayIds[i]= $('#idProducto').text();
-    	
-    	i++;
-    	  console.log(arrayIds[i]); 	
-    });
+    
+
 
 });
