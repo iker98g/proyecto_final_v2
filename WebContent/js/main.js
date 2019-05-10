@@ -16,7 +16,6 @@ $( document ).ready(function() {
         	htmlCode += 	'<img src="'+ datos[i].imagen +'" width="100%"/>';
         	htmlCode += 	'<div class="card-body " >';
             htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
-            htmlCode += 		'<p class="idProducto d-none">'+ datos[i].idProducto +'</p>';
             htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'</p>';
             htmlCode += 		'<div class="d-flex justify-content-between align-items-center">';
 	        htmlCode += 		'<div class=" btn-group">';
