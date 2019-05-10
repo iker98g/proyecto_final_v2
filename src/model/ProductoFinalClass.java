@@ -2,7 +2,7 @@ package model;
 
 public class ProductoFinalClass extends Connect{
 	protected int idFactura;
-	protected int idProducos;
+	protected int idProducto;
 	protected int cantidad;
 	
 	
@@ -10,10 +10,10 @@ public class ProductoFinalClass extends Connect{
 	public ProductoFinalClass() {
 		super();
 	}
-	public ProductoFinalClass(int idFactura, int idProducos, int cantidad) {
+	public ProductoFinalClass(int idFactura, int idProducto, int cantidad) {
 		super();
 		this.idFactura = idFactura;
-		this.idProducos = idProducos;
+		this.idProducto = idProducto;
 		this.cantidad = cantidad;
 	}
 	//GettersAndSetters
@@ -23,11 +23,11 @@ public class ProductoFinalClass extends Connect{
 	public void setIdFactura(int idFactura) {
 		this.idFactura = idFactura;
 	}
-	public int getIdProducos() {
-		return idProducos;
+	public int getIdProducto() {
+		return idProducto;
 	}
-	public void setIdProducos(int idProducos) {
-		this.idProducos = idProducos;
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 	public int getCantidad() {
 		return cantidad;
