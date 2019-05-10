@@ -16,11 +16,11 @@ $( document ).ready(function() {
         	htmlCode += 	'<img src="'+ datos[i].imagen +'" width="100%"/>';
         	htmlCode += 	'<div class="card-body " >';
             htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
-            htmlCode += 		'<p class="d-none">'+ datos[i].idProducto +'</p>';
+            htmlCode += 		'<p class="idProducto d-none">'+ datos[i].idProducto +'</p>';
             htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'</p>';
             htmlCode += 		'<div class="d-flex justify-content-between align-items-center">';
-	        htmlCode += 		'<div class="btn-group">';
-	        htmlCode += 			'<button type="button" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
+	        htmlCode += 		'<div class=" btn-group">';
+	        htmlCode += 			'<button type="button" data-idproducto="'+datos[i].idProducto+'" class="boton-carrito btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
 	        htmlCode += 		'</div>';
             htmlCode += 		'</div>';
             htmlCode += 		'</div>';
@@ -31,12 +31,16 @@ $( document ).ready(function() {
       //  console.log("HTML : "+htmlCode);
         $('#producto').html(htmlCode);
         
-        var arrayIds = [];
-        $('.btn-group').click(function(){
-        	 arrayIds[i] = $('.d-none').txt();
+            
+        $('.boton-carrito').click(function(){
+        	alert($(this).data('idproducto'));
         	
-        	i++;
-        	  console.log(arrayIds[i]); 	
+        	var idp= $(this).data();
+        	alert(idp.idproducto);
+//        	var arrayIds=[] = $(this).data(datos[i].idProducto);
+//        	
+//        	i++;
+//        	  console.log(arrayIds[i]); 	
         });
     });
     
