@@ -16,7 +16,7 @@ $( document ).ready(function() {;
         	htmlCode += '<div class="card-body " >';
             htmlCode += '<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
             htmlCode += '<p class="d-none" id="idProducto">'+ datos[i].idProducto +'</p>';
-            htmlCode += '<p class="card-text">Precio: '+ datos[i].precio +'</p>';
+            htmlCode += '<p class="card-text">Precio: '+ datos[i].precio +'€</p>';
             htmlCode += '<div class="d-flex justify-content-between align-items-center">';
 	        htmlCode += '<div class="btn-group " id="btn-carrito">';
 	        htmlCode += '<button type="button" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
@@ -56,9 +56,10 @@ $( document ).ready(function() {;
         
         $('#categorias').html(htmlCode);
     });
-    console.log(categorias.nombre);
-//    $('.btn-cat').on(click,funtion(){
-//    	$('.btn-cat').addClass('active');
-//    	
-//    });
+//    console.log(categorias.nombre);
+
+    $('.btn-cat').on(click,function(){
+    	$('.btn-cat').addClass('active');
+    	
+    });
 });

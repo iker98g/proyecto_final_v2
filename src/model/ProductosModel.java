@@ -82,4 +82,24 @@ public class ProductosModel extends ProductoClass{
 		}
 		return mensaje;
 	}
+
+	public String borrar() {
+		
+		String mensaje="";
+		PreparedStatement pst;
+		try {
+			pst = (PreparedStatement) this.con.prepareStatement("DELETE FROM PRODUCTOS "
+					+ " WHERE idProducto=?");
+			
+			pst.setInt(1, this.idProducto);
+			
+			pst.execute();
+			mensaje="Producto borrado en la BD";
+			
+		} catch (SQLException e) {
+			
+			mensaje=e.getMessage()+"No se ha podido borrar el producto de la BBDD";
+		}
+		return mensaje;
+	}
 }
