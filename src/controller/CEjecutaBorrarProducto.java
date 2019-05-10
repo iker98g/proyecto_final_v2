@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import model.ProductosModel;
 
 /**
- * Servlet implementation class cBorrarProducto
+ * Servlet implementation class CEjecutaBorrarProducto
  */
-@WebServlet("/cBorrarProducto")
-public class cBorrarProducto extends HttpServlet {
+@WebServlet("/CEjecutaBorrarProducto")
+public class CEjecutaBorrarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public cBorrarProducto() {
+    public CEjecutaBorrarProducto() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,13 +28,16 @@ public class cBorrarProducto extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		int idProducto=Integer.parseInt(request.getParameter("id"));
 		
 		ProductosModel myProductos=new ProductosModel();
-		myProductos.loadData();
 		
-		request.setAttribute("list", myProductos.getList());
+		myProductos.setIdProducto(idProducto);
+		String mensaje=myProductos.borrar();
 		
-		request.getRequestDispatcher("view/vBorrarProducto.jsp").forward(request, response);
+		request.setAttribute("mensaje", mensaje);
+		request.getRequestDispatcher("view/vAviso.jsp").forward(request, response);
 	
 	}
 

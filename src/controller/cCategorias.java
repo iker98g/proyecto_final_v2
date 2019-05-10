@@ -39,17 +39,8 @@ public class cCategorias extends HttpServlet {
 		CategoriasModel myCategorias=new CategoriasModel();
 		myCategorias.loadData();
 		
-		//String jsonString = JSONStringer.valueToString(myProductos);
-		ArrayList<JSONObject> jsonArray=new ArrayList<JSONObject>();
-			
- 		for (int i=0;i<myCategorias.getList().size();i++){
- 			
- 			JSONObject jsonObject=new JSONObject();
- 			jsonObject.put("idCategoria", myCategorias.getList().get(i).getIdCategoria());
- 			jsonObject.put("nombre", myCategorias.getList().get(i).getNombre());
- 			
- 			jsonArray.add(jsonObject);	
- 		}		
+		String jsonString = JSONStringer.valueToString(myCategorias.getList());
+		
 
 		PrintWriter out = response.getWriter();
 	
@@ -57,7 +48,7 @@ public class cCategorias extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 			
-		out.print(jsonArray);
+		out.print(jsonString);
 		out.flush();
 //		
 
