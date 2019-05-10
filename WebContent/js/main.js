@@ -15,9 +15,10 @@ $( document ).ready(function() {;
         	htmlCode += '<img src="'+ datos[i].imagen +'" width="100%"/>';
         	htmlCode += '<div class="card-body " >';
             htmlCode += '<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
+            htmlCode += '<p class="d-none" id="idProducto">'+ datos[i].idProducto +'</p>';
             htmlCode += '<p class="card-text">Precio: '+ datos[i].precio +'</p>';
             htmlCode += '<div class="d-flex justify-content-between align-items-center">';
-	        htmlCode += '<div class="btn-group">';
+	        htmlCode += '<div class="btn-group " id="btn-carrito">';
 	        htmlCode += '<button type="button" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
 	        htmlCode += '</div>';
             htmlCode += '</div>';
@@ -25,9 +26,18 @@ $( document ).ready(function() {;
             htmlCode += '</div>'; 
 
         }
-//        console.log("HTML : "+htmlCode);
+      //  console.log("HTML : "+htmlCode);
         $('#producto').html(htmlCode);
-
+        
+    });
+    
+    var arrayIds = [];
+    $('#btn-carrito').on(click, function(){
+    	//console.log(datos.idProductos);
+    	 arrayIds[i]= $('#idProducto').text();
+    	
+    	i++;
+    	  console.log(arrayIds[i]); 	
     });
     
     var cat="http://10.22.72.80:8080/Proyecto_v2/cCategorias"
