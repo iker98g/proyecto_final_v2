@@ -31,32 +31,32 @@ $( document ).ready(function() {;
         
     });
     
-    var arrayIds = [];
-    $('#btn-carrito').on(click, function(){
-    	//console.log(datos.idProductos);
-    	 arrayIds[i]= $('#idProducto').text();
-    	
-    	i++;
-    	  console.log(arrayIds[i]); 	
-    });
-    
+//    var arrayIds = [];
+//    $('#btn-carrito').on(click, function(){
+//    	//console.log(datos.idProductos);
+//    	 arrayIds[i]= $('#idProducto').text();
+//    	
+//    	i++;
+//    	  console.log(arrayIds[i]); 	
+//    });
+//    
     var cat="http://10.22.72.80:8080/Proyecto_v2/cCategorias"
     
     $.getJSON(cat, function(response){
     	
         var categorias=response;
         
-        console.log("NOMBRE 0 : "+ categorias[0].nombre);
+//        console.log("NOMBRE 0 : "+ categorias[0].nombre);
         var htmlCode="";
         for (let i = 0; i < categorias.length; i++) {
 
         	htmlCode += '<button type="button" class="list-group-item list-group-item-action btn-cat">'+categorias[i].nombre +'</button>';
         }
 //        console.log("HTML : "+htmlCode);
+        
         $('#categorias').html(htmlCode);
-
     });
-    
+    console.log(categorias.nombre);
 //    $('.btn-cat').on(click,funtion(){
 //    	$('.btn-cat').addClass('active');
 //    	

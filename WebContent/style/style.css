@@ -21,7 +21,8 @@ body{
     justify-content: flex-end;
 }
 .barra-categorias{
-   
+	background-color:red;
+   	color:black;
 }
 .container{
     margin-top: 8px;
