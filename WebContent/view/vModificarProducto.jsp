@@ -55,7 +55,7 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				      	<form action="CEjecutaModificarLibro" class="w-75 m-auto ">	
+				      	<form action="cEjecutaModificarProducto" class="w-75 m-auto ">	
 	 						<div class="form-group">
 								<label for="idProducto">IdProducto </label>
 								<input readonly value="<%=list.get(i).getIdProducto() %>" class="form-control" type="text"  id="id" name="id" />
@@ -66,7 +66,7 @@
 							</div>
 							<div class="form-group">
 								<label for="idCategoria">IdCategoria </label>
-								<input readonly value="<%=list.get(i).getIdCategoria() %>" class="form-control" type="text"  id="id" name="id" />
+								<input value="<%=list.get(i).getIdCategoria() %>" class="form-control" type="text"  id="id" name="id" />
 							</div>
 							<div class="form-group">
 								<label for="precio">Precio </label>
