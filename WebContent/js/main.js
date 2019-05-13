@@ -10,17 +10,17 @@ $( document ).ready(function() {
         var htmlCode="";
         for (let i = 0; i < datos.length; i++) {
 
-        	htmlCode += '<div class=" col-2  mx-3">';
+        	htmlCode += '<div class=" col-md-2">';
         	
 
-        	htmlCode +=	'<div class="casillas card mb-1 shadow-sm">';
-        	htmlCode += 	'<img src="'+ datos[i].imagen +'" width="100%"/>';
+        	htmlCode +=	'<div class="casillas card mb-1 shadow-sm mt-3">';
+        	htmlCode += 	'<img class="card-img-top" src="'+ datos[i].imagen +'" width="100%" style="height: 225px; width: 100%; display: block;"/>';
         	htmlCode += 	'<div class="card-body " >';
             htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
             htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'</p>';
-            htmlCode += 		'<div class="d-flex justify-content-between align-items-center">';
-	        htmlCode += 		'<div class=" btn-group">';
-	        htmlCode += 		'<button type="button"' +' data-idproducto="'+datos[i].idProducto+'" data-nombre="'+datos[i].nombre+'" '+' data-precio="'+datos[i].precio+'" class="boton-carrito btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
+            htmlCode += 		'<div class="d-flex justify-content-between-end ">';
+	        htmlCode += 		'<div class=" btn-group ">';
+	        htmlCode += 		'<button type="button" data-imagen="'+datos[i].imagen+'"data-idproducto="'+datos[i].idProducto+'" data-nombre="'+datos[i].nombre+'" '+' data-precio="'+datos[i].precio+'" class="boton-carrito btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
 	        htmlCode += 		'</div>';
             htmlCode += 		'</div>';
             htmlCode += 		'</div>';
@@ -36,6 +36,7 @@ $( document ).ready(function() {
         	//añadir la compra al carrito
         	var compra = {
         			idProducto:$(this).data('idproducto'),
+        			imagen:$(this).data('imagen'),
         			nombre:$(this).data('nombre'),
         			precio:$(this).data('precio')
         			};

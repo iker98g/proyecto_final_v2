@@ -39,3 +39,7 @@ body{
 .casillas{
 	height:500px;
 }
+.casillas > img{
+  background-position: center; 
+  background-size: cover;
+}
