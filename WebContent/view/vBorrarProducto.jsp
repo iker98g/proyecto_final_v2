@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>borrarProducto</title>
+<title>Borrar Producto</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -35,7 +35,7 @@
 				<td><%=list.get(i).getIdProducto() %></td>
 				<td><%=list.get(i).getNombre() %></td>
 				<td><%=list.get(i).getIdCategoria() %></td>
-				<td><%=list.get(i).isPrecio() %></td>
+				<td><%=list.get(i).getPrecio() %></td>
 				<td><%=list.get(i).getDescripcion() %></td>
 				<td><%=list.get(i).getImagen() %></td>
 				<td><a href="CEjecutaBorrarProducto?id=<%=list.get(i).getIdProducto() %>" class="text-primary">BORRAR</a></td>

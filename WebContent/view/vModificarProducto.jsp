@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>modificarProducto</title>
+<title>Modificar Producto</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -35,7 +38,6 @@
 				<td><%=list.get(i).getPrecio() %></td>
 				<td><%=list.get(i).getDescripcion() %></td>
 				<td><%=list.get(i).getImagen() %></td>
-				<td><%=list.get(i).getPrecio() %></td>
 				<td> 
 				
 				<!-- Button trigger modal -->
@@ -53,7 +55,7 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				      	<form action="CEjecutaModificarLibro" class="w-75 m-auto ">	
+				      	<form action="cEjecutaModificarProducto" class="w-75 m-auto ">	
 	 						<div class="form-group">
 								<label for="idProducto">IdProducto </label>
 								<input readonly value="<%=list.get(i).getIdProducto() %>" class="form-control" type="text"  id="id" name="id" />
@@ -64,7 +66,7 @@
 							</div>
 							<div class="form-group">
 								<label for="idCategoria">IdCategoria </label>
-								<input readonly value="<%=list.get(i).getIdCategoria() %>" class="form-control" type="text"  id="id" name="id" />
+								<input value="<%=list.get(i).getIdCategoria() %>" class="form-control" type="text"  id="id" name="id" />
 							</div>
 							<div class="form-group">
 								<label for="precio">Precio </label>

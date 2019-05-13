@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import model.ProductosModel;
 
 /**
- * Servlet implementation class CEjecutaBorrarProducto
+ * Servlet implementation class cEjecutaBorrarProducto
  */
-@WebServlet("/CEjecutaBorrarProducto")
-public class CEjecutaBorrarProducto extends HttpServlet {
+@WebServlet("/cEjecutaBorrarProducto")
+public class cEjecutaBorrarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CEjecutaBorrarProducto() {
+    public cEjecutaBorrarProducto() {
         super();
         // TODO Auto-generated constructor stub
     }

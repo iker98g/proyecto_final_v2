@@ -61,6 +61,9 @@ public class ProductosModel extends ProductoClass{
 	}
 
 	public String insertar() {
+		
+		this.CreateConnection();
+		
 		String mensaje="";
 		PreparedStatement pst;
 		try {
@@ -80,10 +83,13 @@ public class ProductosModel extends ProductoClass{
 			
 			mensaje=e.getMessage()+"No se ha podido insertar el producto en la BBDD";
 		}
+		this.disconnect();
 		return mensaje;
 	}
 
 	public String borrar() {
+		
+		this.CreateConnection();
 		
 		String mensaje="";
 		PreparedStatement pst;
@@ -94,11 +100,43 @@ public class ProductosModel extends ProductoClass{
 			pst.setInt(1, this.idProducto);
 			
 			pst.execute();
-			mensaje="Producto borrado en la BD";
+			mensaje="Producto borrado en la BBDD";
 			
 		} catch (SQLException e) {
 			
 			mensaje=e.getMessage()+"No se ha podido borrar el producto de la BBDD";
+		}
+		return mensaje;
+	}
+
+	public String modificar() {
+		
+		this.CreateConnection();
+		
+		String mensaje="";
+		PreparedStatement pst;
+		try {
+			pst = (PreparedStatement) this.con.prepareStatement("UPDATE PRODUCTOS "
+					+ " SET nombre=? ,"
+					+ "     idCategoria=? , "
+					+ "     precio=? , "
+					+ "     descripcion=? , "
+					+ "     imagen=? , "
+					+ " WHERE idProducto=?");
+			
+			pst.setInt(1, this.idProducto);
+			pst.setString(2, this.nombre);
+			pst.setInt(3, this.idCategoria);
+			pst.setDouble(4, this.precio);
+			pst.setString(2, this.descripcion);
+			pst.setString(2, this.imagen);
+			
+			pst.execute();
+			mensaje="Producto modificado en la BBDD";
+			
+		} catch (SQLException e) {
+			
+			mensaje=e.getMessage()+"No se ha podido modificar el producto de la BBDD";
 		}
 		return mensaje;
 	}

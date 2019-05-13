@@ -68,7 +68,8 @@ $( document ).ready(function() {
         for (let i = 0; i < categorias.length; i++) {
 
 
-        	htmlCode += '<button type="button" class="list-group-item list-group-item-action btn-cat">'+categorias[i].nombre +'</button>';
+//        	htmlCode += '<a class="list-group-item list-group-item-action btn-cat">'+categorias[i].nombre +'</a>';
+        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat">'+categorias[i].nombre +'</button>';
         }
 //        console.log("HTML : "+htmlCode);
         
