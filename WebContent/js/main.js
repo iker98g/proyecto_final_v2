@@ -33,19 +33,27 @@ $( document ).ready(function() {
         
         
         $('.boton-carrito').click(function(){
-        	
-        	localStorage.setItem("carrito","[]");
-        	
-//        	alert($(this).data('idproducto'));
+        	//añadir la compra al carrito
         	var compra = {
         			idProducto:$(this).data('idproducto'),
         			nombre:$(this).data('nombre'),
         			precio:$(this).data('precio')
         			};
         	
-        	localStorage.setItem("carrito",JSON.stringify(compra))
-        	console.log(arrayIds[i]); 
-        	i++;
+    
+        	//sacamos lo que hay en el carrito y le añadimos la compra
+        	//**Esto es para reconvertir el String que genera el localStorage en un array**
+        	var vCarrito=JSON.parse(localStorage.getItem("carrito")); //de string a array JSON
+        	
+        	if ( vCarrito==null){
+        		vCarrito=[];
+        	}
+        	vCarrito.push(compra);
+        	
+        	//añadir el carrito al localstorage pasandolo a string
+        	//**Esto es para reconvertir el String que genera el localStorage en un array**
+        	localStorage.setItem("carrito",JSON.stringify(vCarrito));
+        	
         });
     });
     
@@ -62,7 +70,7 @@ $( document ).ready(function() {
 
 
 //        	htmlCode += '<a class="list-group-item list-group-item-action btn-cat">'+categorias[i].nombre +'</a>';
-        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat">'+categorias[i].nombre +'</button>';
+        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat mt-2 w-75 ml-5 rounded-pill ">'+categorias[i].nombre +'</button>';
         }
 //        console.log("HTML : "+htmlCode);
         

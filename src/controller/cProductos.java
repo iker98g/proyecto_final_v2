@@ -38,6 +38,7 @@ public class cProductos extends HttpServlet {
 		ProductosModel myProductos=new ProductosModel();
 		myProductos.loadData();
 		
+		//la lista está en formato JSON description:
 		String jsonString = JSONStringer.valueToString(myProductos.getList());
 
 		PrintWriter out = response.getWriter();
