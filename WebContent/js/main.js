@@ -10,10 +10,10 @@ $( document ).ready(function() {
         var htmlCode="";
         for (let i = 0; i < datos.length; i++) {
 
-        	htmlCode += '<div class="col-2  mx-5">';
+        	htmlCode += '<div class=" col-2  mx-3">';
         	
 
-        	htmlCode +=	'<div class="card mb-4 shadow-sm">';
+        	htmlCode +=	'<div class="casillas card mb-1 shadow-sm">';
         	htmlCode += 	'<img src="'+ datos[i].imagen +'" width="100%"/>';
         	htmlCode += 	'<div class="card-body " >';
             htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
