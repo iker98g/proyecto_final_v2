@@ -35,7 +35,7 @@
 				<td><%=list.get(i).getIdProducto() %></td>
 				<td><%=list.get(i).getNombre() %></td>
 				<td><%=list.get(i).getIdCategoria() %></td>
-				<td><%=list.get(i).isPrecio() %></td>
+				<td><%=list.get(i).getPrecio() %></td>
 				<td><%=list.get(i).getDescripcion() %></td>
 				<td><%=list.get(i).getImagen() %></td>
 				<td><a href="CEjecutaBorrarProducto?id=<%=list.get(i).getIdProducto() %>" class="text-primary">BORRAR</a></td>

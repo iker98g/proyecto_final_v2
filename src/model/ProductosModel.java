@@ -100,7 +100,7 @@ public class ProductosModel extends ProductoClass{
 			pst.setInt(1, this.idProducto);
 			
 			pst.execute();
-			mensaje="Producto borrado en la BD";
+			mensaje="Producto borrado en la BBDD";
 			
 		} catch (SQLException e) {
 			
