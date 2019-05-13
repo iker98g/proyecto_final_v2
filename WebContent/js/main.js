@@ -42,9 +42,10 @@ $( document ).ready(function() {
         			nombre:$(this).data('nombre'),
         			precio:$(this).data('precio')
         			};
+        	
         	localStorage.setItem("carrito",JSON.stringify(compra))
         	console.log(arrayIds[i]); 
-        	i++;	
+        	i++;
         });
     });
     
