@@ -61,6 +61,9 @@ public class ProductosModel extends ProductoClass{
 	}
 
 	public String insertar() {
+		
+		this.CreateConnection();
+		
 		String mensaje="";
 		PreparedStatement pst;
 		try {
@@ -80,10 +83,13 @@ public class ProductosModel extends ProductoClass{
 			
 			mensaje=e.getMessage()+"No se ha podido insertar el producto en la BBDD";
 		}
+		this.disconnect();
 		return mensaje;
 	}
 
 	public String borrar() {
+		
+		this.CreateConnection();
 		
 		String mensaje="";
 		PreparedStatement pst;

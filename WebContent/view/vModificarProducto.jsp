@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,7 +38,6 @@
 				<td><%=list.get(i).getPrecio() %></td>
 				<td><%=list.get(i).getDescripcion() %></td>
 				<td><%=list.get(i).getImagen() %></td>
-				<td><%=list.get(i).getPrecio() %></td>
 				<td> 
 				
 				<!-- Button trigger modal -->

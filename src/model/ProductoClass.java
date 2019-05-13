@@ -45,7 +45,7 @@ public class ProductoClass extends Connect{
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-	public double isPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 	public void setPrecio(double precio) {
