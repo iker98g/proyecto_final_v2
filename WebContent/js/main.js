@@ -17,7 +17,7 @@ $( document ).ready(function() {
         	htmlCode += 	'<img class="card-img-top" src="'+ datos[i].imagen +'" width="100%" style="height: 225px; width: 100%; display: block;"/>';
         	htmlCode += 	'<div class="card-body " >';
             htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
-            htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'</p>';
+            htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'€'+'</p>';
             htmlCode += 		'<div class="d-flex justify-content-between-end ">';
 	        htmlCode += 		'<div class=" btn-group ">';
 	        htmlCode += 		'<button type="button" data-imagen="'+datos[i].imagen+'"data-idproducto="'+datos[i].idProducto+'" data-nombre="'+datos[i].nombre+'" '+' data-precio="'+datos[i].precio+'" class="boton-carrito btn btn-sm btn-outline-secondary"> <i class="fas fa-cart-plus aniadirCarrito"></i></button>'; 
