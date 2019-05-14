@@ -73,7 +73,7 @@ $( document ).ready(function() {
 
 
 //        	htmlCode += '<a class="list-group-item list-group-item-action btn-cat">'+categorias[i].nombre +'</a>';
-        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat mt-2 w-75 ml-5 rounded-pill ">'+categorias[i].nombre +'</button>';
+        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat mt-2 w-75 ml-5 rounded-pill categoria ">'+categorias[i].nombre +'</button>';
         }
 //        console.log("HTML : "+htmlCode);
         
@@ -85,5 +85,7 @@ $( document ).ready(function() {
 //    	$('.btn-cat').addClass('active');
 //    	
 //    });
-    
+    $('button categoria').on('click', function(event){
+    	var id=$()();
+    });
 });
