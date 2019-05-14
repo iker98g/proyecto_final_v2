@@ -50,6 +50,8 @@ $( document ).ready(function() {
         		vCarrito=[];
         	}
         	vCarrito.push(compra);
+        	//vCarrito[compra.idProducto] = compra;
+        	//vCarrito[compra.idProducto].cantidad +=1;
         	
         	//añadir el carrito al localstorage pasandolo a string
         	//**Esto es para reconvertir el String que genera el localStorage en un array**
