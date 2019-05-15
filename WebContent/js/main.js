@@ -49,7 +49,7 @@ $( document ).ready(function() {
         	if ( vCarrito==null){
         		vCarrito=[];
         	}
-        	vCarrito.push('carrito');
+        	vCarrito.push(compra);
         	//vCarrito[compra.idProducto] = compra;
         	//vCarrito[compra.idProducto].cantidad +=1;
         	
@@ -77,14 +77,17 @@ $( document ).ready(function() {
         }
 //        console.log("HTML : "+htmlCode);
         
-        $('#categorias').html(htmlCode);
+        $('#categorias').append(htmlCode);
         
         $('.categoria').click(function(event){
         	var cId = $(this).data('idcategoria');
         	$('.card-producto[data-idCategoria="'+cId+'"]').show();
         	$('.card-producto[data-idCategoria!="'+cId+'"]').hide();
         	
-        });
+		});
+		$('#categoria-todo').click(function(){
+			$('.card-producto[data-idCategoria]').show();
+		});
     });
 //    console.log(categorias.nombre);
 
