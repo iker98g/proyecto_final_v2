@@ -11,15 +11,18 @@ public class FacturaModel extends FacturaClass{
 	private ArrayList<FacturaClass> list = new ArrayList<FacturaClass>();
 
 	//Constructores
-	public FacturaModel(int idFactura, Date fecha, ArrayList<FacturaClass> list) {
-		super(idFactura, fecha);
+	public FacturaModel(int idFactura, Date fecha, double precioTotal, String nombreCliente, String apellidoCliente,
+			String emailCliente, String ciudadCliente, String codigoPostalCliente, String direccionCliente,
+			String numeroTarjetaCliente, ArrayList<FacturaClass> list) {
+		super(idFactura, fecha, precioTotal, nombreCliente, apellidoCliente, emailCliente, ciudadCliente,
+				codigoPostalCliente, direccionCliente, numeroTarjetaCliente);
 		this.list = list;
 	}
-
+	
 	public FacturaModel() {
 		super();
 	}
-
+	
 	//Getters and Setters
 	public ArrayList<FacturaClass> getList() {
 		return list;
@@ -43,6 +46,7 @@ public class FacturaModel extends FacturaClass{
 				FacturaModel newF = new FacturaModel();
 				newF.idFactura=Integer.parseInt(rs.getString(1));
 				newF.fecha=rs.getDate(2);
+				newF.precioTotal=double.(rs.getString(1));
 				this.list.add(newF);
 			}
 	
@@ -52,5 +56,6 @@ public class FacturaModel extends FacturaClass{
 		}
 		this.disconnect();
 	}
+
 	
 }
