@@ -14,7 +14,7 @@ $( document ).ready(function() {
         	
 
         	htmlCode +=	'<div class="casillas card mb-1 shadow-sm mt-3">';
-        	htmlCode += 	'<img class="card-img-top" src="'+ datos[i].imagen +'" width="100%" style="height: 225px; width: 100%; display: block;"/>';
+        	htmlCode += 	'<img class="card-img-top" src="'+ datos[i].imagen +'" width="100%" style="height: 225px; width: auto; display: block;"/>';
         	htmlCode += 	'<div class="card-body " >';
             htmlCode += 		'<p class="card-text">Nombre del producto: '+ datos[i].nombre +'</p>';
             htmlCode += 		'<p class="card-text">Precio: '+ datos[i].precio +'€'+'</p>';
