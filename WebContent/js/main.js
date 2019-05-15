@@ -10,7 +10,7 @@ $( document ).ready(function() {
         var htmlCode="";
         for (let i = 0; i < datos.length; i++) {
 
-        	htmlCode += '<div class=" col-md-2">';
+        	htmlCode += '<div class=" col-md-2 card-producto" data-idcategoria="'+datos[i].idCategoria+'">';
         	
 
         	htmlCode +=	'<div class="casillas card mb-1 shadow-sm mt-3">';
@@ -35,12 +35,12 @@ $( document ).ready(function() {
         $('.boton-carrito').click(function(){
         	//añadir la compra al carrito
         	var compra = {
+        			//idCategoria:$(this).data('idcategoria'),
         			idProducto:$(this).data('idproducto'),
         			imagen:$(this).data('imagen'),
         			nombre:$(this).data('nombre'),
         			precio:$(this).data('precio')
         			};
-        	
     
         	//sacamos lo que hay en el carrito y le añadimos la compra
         	//**Esto es para reconvertir el String que genera el localStorage en un array**
@@ -49,7 +49,7 @@ $( document ).ready(function() {
         	if ( vCarrito==null){
         		vCarrito=[];
         	}
-        	vCarrito.push(compra);
+        	vCarrito.push('carrito');
         	//vCarrito[compra.idProducto] = compra;
         	//vCarrito[compra.idProducto].cantidad +=1;
         	
@@ -73,11 +73,18 @@ $( document ).ready(function() {
 
 
 //        	htmlCode += '<a class="list-group-item list-group-item-action btn-cat">'+categorias[i].nombre +'</a>';
-        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat mt-2 w-75 ml-5 rounded-pill categoria ">'+categorias[i].nombre +'</button>';
+        	htmlCode += '<button type="button" class="btn btn-outline-primary btn-cat mt-2 w-75 ml-5 rounded-pill categoria" data-idcategoria="'+categorias[i].idCategoria+'">'+categorias[i].nombre +'</button>';
         }
 //        console.log("HTML : "+htmlCode);
         
         $('#categorias').html(htmlCode);
+        
+        $('.categoria').click(function(event){
+        	var cId = $(this).data('idcategoria');
+        	$('.card-producto[data-idCategoria="'+cId+'"]').show();
+        	$('.card-producto[data-idCategoria!="'+cId+'"]').hide();
+        	
+        });
     });
 //    console.log(categorias.nombre);
 
@@ -85,7 +92,5 @@ $( document ).ready(function() {
 //    	$('.btn-cat').addClass('active');
 //    	
 //    });
-    $('button categoria').on('click', function(event){
-    	var id=$()();
-    });
+
 });
