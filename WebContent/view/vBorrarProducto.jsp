@@ -23,8 +23,8 @@
 			<th>NOMBRE</th>
 			<th>IDCATEGORIA</th>
 			<th>PRECIO</th>
-			<th>DESCRIPCION</th>
 			<th>IMAGEN</th>
+			<!-- <th>DESCRIPCION</th> -->
 			<th>ACCION</th>
 		</tr>
 		
@@ -36,8 +36,8 @@
 				<td><%=list.get(i).getNombre() %></td>
 				<td><%=list.get(i).getIdCategoria() %></td>
 				<td><%=list.get(i).getPrecio() %></td>
-				<td><%=list.get(i).getDescripcion() %></td>
-				<td><%=list.get(i).getImagen() %></td>
+	<%-- 			<td><%=list.get(i).getDescripcion() %></td> --%>
+				<td><img src="<%=list.get(i).getImagen() %>" style="height:100px; width:100%"></td>
 				<td><a href="cEjecutaBorrarProducto?idProducto=<%=list.get(i).getIdProducto() %>" class="text-primary">BORRAR</a></td>
 			</tr>
 		<%
