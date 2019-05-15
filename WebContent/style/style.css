@@ -37,7 +37,8 @@ body{
 	
 } */
 .casillas{
-	height:500px;
+    height:500px;
+    
 }
 .casillas > img{
   background-position: center; 
@@ -46,4 +47,13 @@ body{
 .titulo{
     color: white
     
+}
+.div-boton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0px 10px 10px 0px;
+}
+.card-body{
+    position: relative;
 }
