@@ -1,7 +1,5 @@
 package model;
 
-
-
 public class ProductoClass extends Connect{
 	
 	protected int idProducto;

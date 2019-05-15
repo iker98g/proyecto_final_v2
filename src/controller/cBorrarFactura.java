@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ProductosModel;
+
 /**
  * Servlet implementation class cBorrarFactura
  */
@@ -26,8 +28,14 @@ public class cBorrarFactura extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		FacturaModel myFacturas=new FacturaModel();
+		myFacturas.loadData();
+		
+		request.setAttribute("list", myFacturas.getList());
+		
+		request.getRequestDispatcher("view/vBorrarFactura.jsp").forward(request, response);
+	
 	}
 
 	/**
