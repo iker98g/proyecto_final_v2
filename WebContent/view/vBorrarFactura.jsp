@@ -24,11 +24,11 @@
 			<th>PRECIOTOTAL</th>
 			<th>NOMBRE</th>
 			<th>APELLIDO</th>
-			<th>EMAIL</th>
+			<!-- <th>EMAIL</th>
 			<th>CIUDAD</th>
 			<th>CODIGOPOSTAL</th>
 			<th>DIRECCION</th>
-			<th>NUMEROTARJETA</th>
+			<th>NUMEROTARJETA</th> -->
 			<th>ACCION</th>
 		</tr>
 		
@@ -41,11 +41,11 @@
 				<td><%=list.get(i).getPrecioTotal() %></td>
 				<td><%=list.get(i).getNombreCliente() %></td>
 				<td><%=list.get(i).getApellidoCliente() %></td>
-				<td><%=list.get(i).getEmailCliente() %></td>
+				<%-- <td><%=list.get(i).getEmailCliente() %></td>
 				<td><%=list.get(i).getCiudadCliente() %></td>
 				<td><%=list.get(i).getCodigoPostalCliente() %></td>
 				<td><%=list.get(i).getDireccionCliente() %></td>
-				<td><%=list.get(i).getNumeroTarjetaCliente() %></td>
+				<td><%=list.get(i).getNumeroTarjetaCliente() %></td> --%>
 				<td><a href="cEjecutaBorrarFactura?idFactura=<%=list.get(i).getIdFactura() %>" class="text-primary">BORRAR</a></td>
 			</tr>
 		<%
