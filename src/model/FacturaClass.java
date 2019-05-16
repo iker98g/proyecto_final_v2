@@ -11,14 +11,14 @@ public class FacturaClass extends Connect{
 	protected String apellidoCliente;
 	protected String emailCliente;
 	protected String ciudadCliente;
-	protected String codigoPostalCliente;
+	protected int codigoPostalCliente;
 	protected String direccionCliente;
-	protected String numeroTarjetaCliente;
+	protected int numeroTarjetaCliente;
 	
 	//Constructores
 	public FacturaClass(int idFactura, Date fecha, double precioTotal, String nombreCliente, String apellidoCliente,
-			String emailCliente, String ciudadCliente, String codigoPostalCliente, String direccionCliente,
-			String numeroTarjetaCliente) {
+			String emailCliente, String ciudadCliente, int codigoPostalCliente, String direccionCliente,
+			int numeroTarjetaCliente) {
 		super();
 		this.idFactura = idFactura;
 		this.fecha = fecha;
@@ -93,11 +93,11 @@ public class FacturaClass extends Connect{
 		this.ciudadCliente = ciudadCliente;
 	}
 
-	public String getCodigoPostalCliente() {
+	public int getCodigoPostalCliente() {
 		return codigoPostalCliente;
 	}
 
-	public void setCodigoPostalCliente(String codigoPostalCliente) {
+	public void setCodigoPostalCliente(int codigoPostalCliente) {
 		this.codigoPostalCliente = codigoPostalCliente;
 	}
 
@@ -109,11 +109,11 @@ public class FacturaClass extends Connect{
 		this.direccionCliente = direccionCliente;
 	}
 
-	public String getNumeroTarjetaCliente() {
+	public int getNumeroTarjetaCliente() {
 		return numeroTarjetaCliente;
 	}
 
-	public void setNumeroTarjetaCliente(String numeroTarjetaCliente) {
+	public void setNumeroTarjetaCliente(int numeroTarjetaCliente) {
 		this.numeroTarjetaCliente = numeroTarjetaCliente;
 	}
 	

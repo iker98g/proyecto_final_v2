@@ -10,17 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 import model.FacturaModel;
 import model.ProductosModel;
 
+
 /**
- * Servlet implementation class cBorrarFactura
+ * Servlet implementation class CEjecutaBorrarFactura
  */
-@WebServlet("/cBorrarFactura")
-public class cBorrarFactura extends HttpServlet {
+@WebServlet("/cEjecutaBorrarFactura")
+public class cEjecutaBorrarFactura extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public cBorrarFactura() {
+    public cEjecutaBorrarFactura() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +30,18 @@ public class cBorrarFactura extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		int idFactura=Integer.parseInt(request.getParameter("idFactura"));
 		
 		FacturaModel myFacturas=new FacturaModel();
-		myFacturas.loadData();
 		
-		request.setAttribute("list", myFacturas.getList());
+		myFacturas.setIdFactura(idFactura);
+		String mensaje=myFacturas.borrar();
 		
-		request.getRequestDispatcher("view/vBorrarFactura.jsp").forward(request, response);
+		request.setAttribute("mensaje", mensaje);
+		request.getRequestDispatcher("view/vAviso.jsp").forward(request, response);
 	
+		
 	}
 
 	/**
