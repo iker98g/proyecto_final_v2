@@ -37,7 +37,8 @@ body{
 	
 } */
 .casillas{
-	height:500px;
+    height:500px;
+    
 }
 .casillas > img{
   background-position: center; 
@@ -47,3 +48,32 @@ body{
     color: white
     
 }
+.div-boton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0px 10px 10px 0px;
+}
+.card-body{
+    position: relative;
+}
+/* COMPRAR.HTML */
+/* #total{
+    
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.precio-total{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.boton{
+    position: fixed;
+    bottom: 0;
+    right: 0: 
+} */
