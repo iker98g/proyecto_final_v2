@@ -40,6 +40,7 @@ $(document).ready(function () {
 			//**Esto es para reconvertir el String que genera el localStorage en un array**
 			var vCarrito = JSON.parse(localStorage.getItem("carrito")); //de string a array JSON
 			var encontrado = false;
+			
 			if (vCarrito == null) {
 				vCarrito = [];
 			}
@@ -48,6 +49,7 @@ $(document).ready(function () {
 
 					if (vCarrito[index].idProducto == $(this).data('idproducto')) {
 						vCarrito[index].cantidad++;
+						
 						encontrado = true;
 					}
 				}

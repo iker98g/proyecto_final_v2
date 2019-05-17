@@ -9,15 +9,32 @@ $( document ).ready(function() {
 		htmlCode += 	'<td><img class="card-img-top" src="'+ vCarrito[i].imagen +'" width="100%" style="height: 150px; width: auto; display: block;"/></td>';
 		htmlCode += 	'<td>'+ vCarrito[i].nombre +'</td>';
 		htmlCode += 	'<td>'+ vCarrito[i].precio +'€</td>';
-		htmlCode += 	'<td>'+vCarrito[i].cantidad+'</td>';
-		htmlCode += 	'<td>"TOTAL"</td>';
-		htmlCode += 	'<td>"ELIMINAR"</td>';
+		htmlCode += 	'<td>'+ vCarrito[i].cantidad+'</td>';
+		
+		vCarrito[i].total=vCarrito[i].precio * vCarrito[i].cantidad;
+		
+		htmlCode += 	'<td>'+ vCarrito[i].total+'€</td>';
+		htmlCode += 	'<td><i class="far fa-trash-alt eliminar"></i></td>';
     htmlCode += '</tr>';
-	}
+   
+	
 	$('#compra > tbody').html(htmlCode);
-
-	//function calcularTotal();
-
+	
+//		for (var i = 0; i < vCarrito.length; i++) {	
+	}
+		
+	
+//		subtotal = precio*cantidad;
+//		inputtext.value=subtotal;
+	var htmlTotal="";
+	var subtotal =0;
+	for (let i = 0; i < vCarrito.length; i++) {
+		subtotal = subtotal+vCarrito[i].total;
+		
+	}
+	//console.log(subtotal);
+	htmlTotal += 	'<div>'+subtotal+'€</div>';
+	$('#precio-total').html('TOTAL: '+htmlTotal);
 });
 
 // function calcularTotal () {
