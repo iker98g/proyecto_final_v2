@@ -21,8 +21,15 @@ body{
     justify-content: flex-end;
 }
 .barra-categorias{
+    
 	background-color:white;
    	color:black;
+}
+#categoria-todo{
+    margin-left: auto;
+}
+.categoria{
+    margin-left: auto;
 }
 .container{
   	margin-top: 5px; 
@@ -44,6 +51,9 @@ body{
   background-position: center; 
   background-size: cover;
 }
+.casillas > img:hover{
+    opacity: 0.8;
+}
 .titulo{
     color: white
     
@@ -54,6 +64,9 @@ body{
     right: 0;
     margin: 0px 10px 10px 0px;
 }
+/* .btn-group{
+
+} */
 .card-body{
     position: relative;
 }
