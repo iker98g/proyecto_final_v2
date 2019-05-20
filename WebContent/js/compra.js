@@ -36,6 +36,11 @@ $(document).ready(function () {
 	//console.log(subtotal);
 	htmlTotal += 	'<div>'+subtotal+'€</div>';
 	$('#precio-total').html('TOTAL: '+htmlTotal);
+	
+
+
+
+
 });
 
 // function calcularTotal () {

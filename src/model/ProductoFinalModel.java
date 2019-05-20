@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.PreparedStatement;
+
 public class ProductoFinalModel extends ProductoFinalClass{
 	private ArrayList<ProductoFinalClass> list = new ArrayList<ProductoFinalClass>();
 //getters and Setters
@@ -20,10 +22,12 @@ public class ProductoFinalModel extends ProductoFinalClass{
 		super();
 	}
 
-	public ProductoFinalModel(int idFactura, int idProducos, int cantidad, ArrayList<ProductoFinalClass> list) {
-		super(idFactura, idProducos, cantidad);
-		this.list = list;
-	}
+
+	public ProductoFinalModel(int idFactura, int idProducto, String nombre, Double precio, int cantidad,
+		ArrayList<ProductoFinalClass> list) {
+	super(idFactura, idProducto, nombre, precio, cantidad);
+	this.list = list;
+}
 
 	public void loadData()
 	{
@@ -38,8 +42,10 @@ public class ProductoFinalModel extends ProductoFinalClass{
 			{
 				ProductoFinalModel newP = new ProductoFinalModel();
 				newP.idFactura=Integer.parseInt(rs.getString(1));
-				newP.idProducos=Integer.parseInt(rs.getString(2));
-				newP.cantidad=Integer.parseInt(rs.getString(3));
+				newP.idProducto=Integer.parseInt(rs.getString(2));
+				newP.nombre=rs.getString(3);
+				newP.precio=Double.parseDouble(rs.getString(4));
+				newP.cantidad=Integer.parseInt(rs.getString(5));
 
 			}
 	
@@ -49,5 +55,26 @@ public class ProductoFinalModel extends ProductoFinalClass{
 		}
 		this.disconnect();
 	}
+
+	public String insertar() {
+
+		this.CreateConnection();
+		
+		String mensaje="";
+		PreparedStatement pst;
+		try {
+			pst = (PreparedStatement) this.con.prepareStatement("call spInsertarLinea(?,?,?,?,?");
+			
+			pst.setInt(1, this.idFactura);
+			pst.setInt(2, this.idProducto);
+			
+			pst.execute();
+			mensaje="Linea insertada en la BBDD";
+			
+		} catch (SQLException e) {
+			
+			mensaje=e.getMessage()+"No se ha podido insertar la linea de la BBDD";
+		}
+		return mensaje;
 	
 }

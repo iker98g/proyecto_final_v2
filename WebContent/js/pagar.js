@@ -15,4 +15,26 @@ $(document).ready(function () {
 		htmlCode += '</tr>';
 	}
 	$('#compra > tbody').html(htmlCode);
+
+	$('#pagar').on("click",function(){
+
+		var vCarrito=JSON.parse(localStorage.getItem("carrito"));
+
+		var vCliente=$('#cliente').val();
+
+		datos{
+			carrito:vCarrito,
+			cliente:vCliente
+
+		};
+
+
+		var enlace = "http://10.22.72.80:8080/Proyecto_v2/cGuardarFactura";
+		
+		$.getJSON(enlace,datos, function (response) {
+		
+		
+		})
+
+	});
 });
