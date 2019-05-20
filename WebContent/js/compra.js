@@ -1,8 +1,8 @@
-$( document ).ready(function() {
-   
-	var vCarrito=JSON.parse(localStorage.getItem('carrito'));
-	var htmlCode="";
-	
+$(document).ready(function () {
+
+	var vCarrito = JSON.parse(localStorage.getItem('carrito'));
+	var htmlCode = "";
+
 	for (let i = 0; i < vCarrito.length; i++) {
 	
 	htmlCode += '<tr>';
@@ -18,6 +18,7 @@ $( document ).ready(function() {
     htmlCode += '</tr>';
    
 	
+
 	$('#compra > tbody').html(htmlCode);
 	
 //		for (var i = 0; i < vCarrito.length; i++) {	
