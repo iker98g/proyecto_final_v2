@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.FacturaModel;
+
 /**
  * Servlet implementation class cVerFactura
  */
@@ -26,8 +28,13 @@ public class cVerFactura extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		FacturaModel myFacturas=new FacturaModel();
+		myFacturas.loadData();
+		
+		request.setAttribute("list", myFacturas.getList());
+		
+		request.getRequestDispatcher("view/vVerFactura.jsp").forward(request, response);
 	}
 
 	/**

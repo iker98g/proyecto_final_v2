@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1 class="my-5 w-75 mx-auto" >Añadir Producto</h1>
+<h1 class="my-5 w-75 mx-auto" >AÑADIR PRODUCTO</h1>
 
 <form action="cEjecutaAniadirProducto" class="w-50 m-auto ">	
 	
