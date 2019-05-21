@@ -1,14 +1,20 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONStringer;
+
+import model.ProductosModel;
+
 
 import model.FacturaModel;
 import model.ProductoFinalModel;
@@ -31,9 +37,9 @@ public class cGuardarFactura extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String cliente=request.getParameter("nombre");
+//		String cliente=request.getParameter("nombre");
 		
 		
 //		FacturaModel myFactura=new FacturaModel();
@@ -65,13 +71,33 @@ public class cGuardarFactura extends HttpServlet {
 //			
 //		}
 		
+//		response.setHeader("Access-Control-Allow-Origin","*"); //jsonp deia denean ez da behar
+//		response.setContentType("application/json");
+//		response.setCharacterEncoding("UTF-8");
+//			
+//		out.print(cliente);
+//		out.flush();
+//		
+//		
+//	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ProductosModel myProductos=new ProductosModel();
+		myProductos.loadData();
+		
+		//la lista está en formato JSON description:
+		String jsonString = JSONStringer.valueToString(myProductos.getList());
+
+		PrintWriter out = response.getWriter();
+	
 		response.setHeader("Access-Control-Allow-Origin","*"); //jsonp deia denean ez da behar
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 			
-		out.print(cliente);
+		out.print(jsonString);
 		out.flush();
 		
+		System.out.println("DATOS JSON : "+jsonString);
 		
 	}
 

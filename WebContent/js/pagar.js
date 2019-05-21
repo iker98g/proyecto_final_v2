@@ -30,7 +30,7 @@ $(document).ready(function () {
 		};
 
 
-		enlace = "http://10.22.72.80:8080/Proyecto_v2/cGuardarFactura";
+		enlace = "http://10.22.72.80:8080/Proyecto_v2/cProductos";
 		
 		$.getJSON(enlace,{nombre:'a'}, function (response) {
 		
