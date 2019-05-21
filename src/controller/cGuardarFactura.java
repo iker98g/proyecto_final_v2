@@ -33,39 +33,44 @@ public class cGuardarFactura extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String cliente=request.getParameter("cliente");
+		String cliente=request.getParameter("nombre");
 		
 		
-		FacturaModel myFactura=new FacturaModel();
+//		FacturaModel myFactura=new FacturaModel();
+//		
+//		myFactura.setNombreCliente(cliente);
+//		
+//		
+//		
+//		
+//		int idFactura=myFactura.insertarFactura();
+//		
+//		String carrito= request.getParameter("carrito");
+//
+//		JSONArray vCarrito=new JSONArray(carrito);
+//		
+//		for (int i=0;i<vCarrito.length();i++) {
+//			
+//			JSONObject compra=vCarrito.getJSONObject(i);
+//			
+//			ProductoFinalModel myLinea=new ProductoFinalModel();
+//			
+//			myLinea.setIdFactura(idFactura);
+//			myLinea.setIdProducto(compra.getInt("idProducto"));
+//			myLinea.setNombre(compra.getString("nombre"));
+//			myLinea.setPrecio(compra.getDouble("precio"));
+//			myLinea.setCantidad(compra.getInt("cantidad"));
+//			
+//			myLinea.insertar();
+//			
+//		}
 		
-		myFactura.setNombreCliente(cliente);
-		
-		
-		
-		
-		int idFactura=myFactura.insertarFactura();
-		
-		String carrito= request.getParameter("carrito");
-
-		JSONArray vCarrito=new JSONArray(carrito);
-		
-		for (int i=0;i<vCarrito.length();i++) {
+		response.setHeader("Access-Control-Allow-Origin","*"); //jsonp deia denean ez da behar
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 			
-			JSONObject compra=vCarrito.getJSONObject(i);
-			
-			ProductoFinalModel myLinea=new ProductoFinalModel();
-			
-			myLinea.setIdFactura(idFactura);
-			myLinea.setIdProducto(compra.getInt("idProducto"));
-			myLinea.setNombre(compra.getString("nombre"));
-			myLinea.setPrecio(compra.getDouble("precio"));
-			myLinea.setCantidad(compra.getInt("cantidad"));
-			
-			myLinea.insertar();
-			
-		}
-		
-		
+		out.print(cliente);
+		out.flush();
 		
 		
 	}

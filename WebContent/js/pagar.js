@@ -1,3 +1,5 @@
+var enlace;
+var datos;
 $(document).ready(function () {
 
 	var vCarrito = JSON.parse(localStorage.getItem('carrito'));
@@ -22,19 +24,19 @@ $(document).ready(function () {
 
 		var vCliente=$('#cliente').val();
 
-		datos{
+		datos={
 			carrito:vCarrito,
 			cliente:vCliente
-
 		};
 
 
-		var enlace = "http://10.22.72.80:8080/Proyecto_v2/cGuardarFactura";
+		enlace = "http://10.22.72.80:8080/Proyecto_v2/cGuardarFactura";
 		
-		$.getJSON(enlace,datos, function (response) {
+		$.getJSON(enlace,{nombre:'a'}, function (response) {
 		
 		
-		})
+		});
+
 
 	});
 });
