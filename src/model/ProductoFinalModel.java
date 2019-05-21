@@ -56,7 +56,7 @@ public class ProductoFinalModel extends ProductoFinalClass{
 		this.disconnect();
 	}
 
-	public String insertar() {
+	public void insertarLinea() {
 
 		this.CreateConnection();
 		
@@ -67,14 +67,18 @@ public class ProductoFinalModel extends ProductoFinalClass{
 			
 			pst.setInt(1, this.idFactura);
 			pst.setInt(2, this.idProducto);
+			pst.setString(3, this.nombre);
+			pst.setDouble(4, this.precio);
+			pst.setInt(5, this.cantidad);
 			
 			pst.execute();
-			mensaje="Linea insertada en la BBDD";
+			System.out.println("Linea insertada en la BBDD");
 			
 		} catch (SQLException e) {
 			
-			mensaje=e.getMessage()+"No se ha podido insertar la linea de la BBDD";
+			System.out.println(e.getMessage()+"No se ha podido insertar la linea de la BBDD");
 		}
-		return mensaje;
+		
+	}
 	
 }

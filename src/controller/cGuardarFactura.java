@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
@@ -82,22 +83,66 @@ public class cGuardarFactura extends HttpServlet {
 //	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ProductosModel myProductos=new ProductosModel();
-		myProductos.loadData();
-		
-		//la lista está en formato JSON description:
-		String jsonString = JSONStringer.valueToString(myProductos.getList());
+		String nombre=request.getParameter("nombre");
+//		System.out.println("DATOS JSON nombreCliente : "+nombreCliente);
+		String apellido=request.getParameter("apellido");
+		String email=request.getParameter("email");
+		String ciudad=request.getParameter("ciudad");
+		int codigoPostal=Integer.parseInt(request.getParameter("codigoPostal"));
+		String direccion=request.getParameter("direccion");
+		int numeroTarjeta=Integer.parseInt(request.getParameter("numeroTarjeta"));
 
-		PrintWriter out = response.getWriter();
-	
+		FacturaModel myFactura=new FacturaModel();
+		
+		myFactura.setNombreCliente(nombre);
+		myFactura.setApellidoCliente(apellido);
+		myFactura.setEmailCliente(email);
+		myFactura.setCiudadCliente(ciudad);
+		myFactura.setCodigoPostalCliente(codigoPostal);
+		myFactura.setDireccionCliente(direccion);
+		myFactura.setNumeroTarjetaCliente(numeroTarjeta);
+		
+		int idFactura=myFactura.insertarFactura();
+
+		String ids = "";
+		
+		if (idFactura !=0) {
+				String carrito=request.getParameter("carrito");
+				System.out.println("DATOS JSON carrito : "+carrito);
+		
+				JSONArray vCarrito=new JSONArray(carrito);
+				
+				
+				for (int i=0;i<vCarrito.length();i++) {
+					
+					JSONObject compra=vCarrito.getJSONObject(i);
+					
+					ProductoFinalModel myLinea=new ProductoFinalModel();
+					
+					myLinea.setIdFactura(idFactura);
+					myLinea.setIdProducto(compra.getInt("idProducto"));
+					myLinea.setNombre(compra.getString("nombre"));
+					myLinea.setPrecio(compra.getDouble("precio"));
+					myLinea.setCantidad(compra.getInt("cantidad"));
+					
+					myLinea.insertarLinea();			
+					
+					ids = ids+ " " + compra.getInt("idProducto");
+					ids = ids+ " " + compra.getString("nombre");
+					ids = ids+ " " + compra.getDouble("precio");
+					ids = ids+ " " + compra.getInt("cantidad");
+					
+				}
+		}
 		response.setHeader("Access-Control-Allow-Origin","*"); //jsonp deia denean ez da behar
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-			
-		out.print(jsonString);
+
+		PrintWriter out = response.getWriter();
+		out.print(ids);
 		out.flush();
 		
-		System.out.println("DATOS JSON : "+jsonString);
+		//System.out.println("DATOS JSON : "+jsonString);
 		
 	}
 

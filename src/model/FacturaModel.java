@@ -87,5 +87,43 @@ public class FacturaModel extends FacturaClass{
 		return mensaje;
 	}
 
+	public int insertarFactura() {
+		int id=0;
+		this.CreateConnection();
+		
+		String mensaje="";
+		PreparedStatement pst;
+		try {
+			pst = (PreparedStatement) this.con.prepareStatement("call insertar_factura (?,?,?,?,?,?,?,?)");
+			
+			
+			pst.setDouble(1, this.precioTotal);
+			pst.setString(2, this.nombreCliente);
+			pst.setString(3, this.apellidoCliente);
+			pst.setString(4, this.emailCliente);
+			pst.setString(5, this.ciudadCliente);
+			pst.setInt(6, this.codigoPostalCliente);
+			pst.setString(7, this.direccionCliente);
+			pst.setInt(8, this.numeroTarjetaCliente);
+			
+			ResultSet rs=pst.executeQuery();
+			
+			if (rs.next()) {
+				id=rs.getInt(1);
+				
+			}
+			
+			System.out.println("Factura insertada en la BBDD");
+			
+		} catch (SQLException e) {
+			
+			System.out.println(e.getMessage()+"      No se ha podido insertar la factura en la BBDD");
+		}
+		
+		this.disconnect();
+		return id;
+		
+	}
+
 	
 }

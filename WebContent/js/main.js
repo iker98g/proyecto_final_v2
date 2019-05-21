@@ -19,7 +19,7 @@ $(document).ready(function () {
 			//htmlCode += '<img class="card-img-top mas-info" data-toggle="modal" data-target="exampleModal" src="' + datos[i].imagen + '" width="100%" style="height: 225px; width: auto; display: block;"></img>';
 			htmlCode += '<div class="masInfo"></div>';
 			htmlCode += '<div class="card-body" >';
-			htmlCode += '<p class="card-text">Nombre del producto: ' + datos[i].nombre + '</p>';
+			htmlCode += '<p class="card-text">' + datos[i].nombre + '</p>';
 			htmlCode += '<p class="card-text ">Precio: ' + datos[i].precio + '€' + '</p>';
 			htmlCode += '<div class=" div-boton ">';
 			htmlCode += '<div class=" btn-group ">';
