@@ -2,7 +2,8 @@ $(document).ready(function () {
 
 	var vCarrito = JSON.parse(localStorage.getItem('carrito'));
 	var htmlCode = "";
-
+	// var vCarritoFinal=JSON.parse(localStorage.getItem('carrito-final'));
+	// var vCarritoFinal=[];
 	for (let i = 0; i < vCarrito.length; i++) {
 	
 	htmlCode += '<tr>';
@@ -20,7 +21,7 @@ $(document).ready(function () {
 	
 
 	$('#compra > tbody').html(htmlCode);
-	
+	// localStorage.setItem("carrito-final", JSON.stringify(vCarritoFinal));
 //		for (var i = 0; i < vCarrito.length; i++) {	
 	}
 		

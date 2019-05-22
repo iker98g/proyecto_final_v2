@@ -18,25 +18,22 @@ $(document).ready(function () {
 	}
 	$('#compra > tbody').html(htmlCode);
 
-	$('#pagar').on("click",function(){
+	$('#pagar').on("click", function () {
+		//####Mandar los datos al servidor
+		datos = {
+			carrito: localStorage.getItem('carrito'),
 
-		var vCarrito=JSON.parse(localStorage.getItem("carrito"));
-
-		var vCliente=$('#cliente').val();
-
-		datos={
-			carrito:vCarrito,
-			cliente:vCliente
+			nombre: $('#nombre').val(),
+			apellido: $('#apellido').val(),
+			email: $('#email').val(),
+			ciudad: $('#ciudad').val(),
+			codigoPostal: $('#codigoPostal').val(),
+			direccion: $('#direccion').val(),
+			numeroTarjeta: $('#numeroTarjeta').val()
 		};
+		enlace = "http://10.22.72.80:8080/Proyecto_v2/cGuardarFactura";
 
-
-		enlace = "http://10.22.72.80:8080/Proyecto_v2/cProductos";
-		
-		$.getJSON(enlace,{nombre:'a'}, function (response) {
-		
-		
+		$.getJSON(enlace, datos, function (response) {
 		});
-
-
 	});
 });
