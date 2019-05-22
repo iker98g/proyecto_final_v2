@@ -21,6 +21,7 @@ $(document).ready(function () {
 	
 
 	$('#compra > tbody').html(htmlCode);
+	localStorage.setItem("carrito", JSON.stringify(vCarrito));
 	// localStorage.setItem("carrito-final", JSON.stringify(vCarritoFinal));
 //		for (var i = 0; i < vCarrito.length; i++) {	
 	}
@@ -29,14 +30,15 @@ $(document).ready(function () {
 //		subtotal = precio*cantidad;
 //		inputtext.value=subtotal;
 	var htmlTotal="";
-	var subtotal =0;
+	var subTotal = 0;
 	for (let i = 0; i < vCarrito.length; i++) {
-		subtotal = subtotal+vCarrito[i].total;
+		subTotal = subTotal+vCarrito[i].total;
 		
 	}
 	//console.log(subtotal);
-	htmlTotal += 	'<div>'+subtotal+'€</div>';
+	htmlTotal += 	'<div>'+subTotal+'€</div>';
 	$('#precio-total').html('TOTAL: '+htmlTotal);
+	localStorage.setItem("subTotal", JSON.stringify(subTotal));
 	
 
 

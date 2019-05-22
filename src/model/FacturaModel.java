@@ -113,7 +113,7 @@ public class FacturaModel extends FacturaClass{
 				
 			}
 			
-			System.out.println("Factura insertada en la BBDD");
+			System.out.println("Factura insertada en la BBDD con id: " + id);
 			
 		} catch (SQLException e) {
 			

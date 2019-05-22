@@ -13,6 +13,10 @@ body{
 .aniadirCarrito{
     
 }
+.modal-descripcion{
+    margin: 10px 25px;
+
+}
 .carrito:hover{
     background-color: white;
     color: black;

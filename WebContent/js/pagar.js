@@ -3,6 +3,7 @@ var datos;
 $(document).ready(function () {
 
 	var vCarrito = JSON.parse(localStorage.getItem('carrito'));
+
 	var htmlCode = "";
 
 	for (let i = 0; i < vCarrito.length; i++) {
@@ -12,7 +13,7 @@ $(document).ready(function () {
 		htmlCode += '<td>' + vCarrito[i].nombre + '</td>';
 		htmlCode += '<td>' + vCarrito[i].precio + '€</td>';
 		htmlCode += '<td>' + vCarrito[i].cantidad + '</td>';
-		htmlCode += '<td>"TOTAL"</td>';
+		htmlCode += '<td>'+vCarrito[i].total+'</td>';
 		htmlCode += '<td>"ELIMINAR"</td>';
 		htmlCode += '</tr>';
 	}
@@ -23,6 +24,7 @@ $(document).ready(function () {
 		datos = {
 			carrito: localStorage.getItem('carrito'),
 
+			subTotal: localStorage.getItem('subTotal'),
 			nombre: $('#nombre').val(),
 			apellido: $('#apellido').val(),
 			email: $('#email').val(),
@@ -33,7 +35,11 @@ $(document).ready(function () {
 		};
 		enlace = "http://10.22.72.80:8080/Proyecto_v2/cGuardarFactura";
 
-		$.getJSON(enlace, datos, function (response) {
+		$.get(enlace, datos, function (response) {
+			var respuesta = JSON.parse(response);
+				console.log(respuesta);
+				
 		});
+
 	});
 });

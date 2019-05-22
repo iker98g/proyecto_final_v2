@@ -83,6 +83,7 @@ public class cGuardarFactura extends HttpServlet {
 //	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		String nombre=request.getParameter("nombre");
 //		System.out.println("DATOS JSON nombreCliente : "+nombreCliente);
 		String apellido=request.getParameter("apellido");
@@ -93,7 +94,6 @@ public class cGuardarFactura extends HttpServlet {
 		int numeroTarjeta=Integer.parseInt(request.getParameter("numeroTarjeta"));
 
 		FacturaModel myFactura=new FacturaModel();
-		
 		myFactura.setNombreCliente(nombre);
 		myFactura.setApellidoCliente(apellido);
 		myFactura.setEmailCliente(email);
@@ -104,7 +104,10 @@ public class cGuardarFactura extends HttpServlet {
 		
 		int idFactura=myFactura.insertarFactura();
 
+		
 		String ids = "";
+		
+		
 		
 		if (idFactura !=0) {
 				String carrito=request.getParameter("carrito");
