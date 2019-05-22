@@ -121,15 +121,15 @@ public class ProductosModel extends ProductoClass{
 					+ "     idCategoria=? , "
 					+ "     precio=? , "
 					+ "     descripcion=? , "
-					+ "     imagen=? , "
+					+ "     imagen=?"
 					+ " WHERE idProducto=?");
 			
 			pst.setInt(1, this.idProducto);
 			pst.setString(2, this.nombre);
 			pst.setInt(3, this.idCategoria);
 			pst.setDouble(4, this.precio);
-			pst.setString(2, this.descripcion);
-			pst.setString(2, this.imagen);
+			pst.setString(5, this.descripcion);
+			pst.setString(6, this.imagen);
 			
 			pst.execute();
 			mensaje="Producto modificado en la BBDD";

@@ -32,6 +32,7 @@ public class cModificarProducto extends HttpServlet {
 		ProductosModel myProductos=new ProductosModel();
 		myProductos.loadData();
 		
+		//llamar a la vista vVerTodos con los datos de la lista
 		request.setAttribute("list", myProductos.getList());
 		
 		request.getRequestDispatcher("view/vModificarProducto.jsp").forward(request, response);
