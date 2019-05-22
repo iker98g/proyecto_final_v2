@@ -29,7 +29,7 @@ public class cAdmin extends HttpServlet {
 		
 		//llama a la vista vAdmin.jsp
 		
-		request.getRequestDispatcher("view/vAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("http://10.22.72.80:8080/Proyecto_v2/cAdmin").forward(request, response);
 				
 	}
 

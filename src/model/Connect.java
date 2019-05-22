@@ -16,9 +16,9 @@ protected Connection con = null;
 	public Connection CreateConnection()
 	{
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/tienda_productos";
-		String userBbdd = "root";
-		String passBbdd = "";
+		String url = "jdbc:mysql://http://10.22.72.80/tienda_productos";
+		String userBbdd = "bogdan";
+		String passBbdd = "mellon";
 		
 		
         	try {
