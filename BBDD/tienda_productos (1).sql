@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2019 a las 10:46:04
+-- Tiempo de generación: 22-05-2019 a las 13:53:50
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.1.21
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tienda_productos`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_factura` (IN `pPrecioTotal` DOUBLE(10,2), IN `pNombre` VARCHAR(50), IN `pApellido` VARCHAR(50), IN `pEmail` VARCHAR(50), IN `pCiudad` VARCHAR(50), IN `pCodigoPostal` INT(11), IN `pDireccion` VARCHAR(50), IN `pNumeroTarjeta` INT(50))  NO SQL
+begin
+insert into factura( factura.precioTotal,factura.nombreCliente,factura.apellidoCliente,factura.emailCliente,factura.ciudadCliente,factura.codigoPostalCliente,factura.direccionCliente,factura.numeroTarjetaCliente)
+                    
+values (pPrecioTotal,pNombre, pApellido, pEmail, pCiudad, pCodigoPostal, pDireccion, pNumeroTarjeta);
+        
+
+Select last_insert_id() as "id";
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertaLinea` (IN `pIdFactura` INT, IN `pIdProducto` INT, IN `pNombre` VARCHAR(50), IN `pPrecio` DOUBLE, IN `pCantidad` INT, IN `pTotal` DOUBLE)  NO SQL
+BEGIN
+insert into productofinal values(pIdFactura,pIdProducto,pNombre,pPrecio,pCantidad,pTotal);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -52,7 +73,8 @@ INSERT INTO `categorias` (`idCategoria`, `nombre`) VALUES
 
 CREATE TABLE `factura` (
   `idFactura` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `precioTotal` decimal(10,2) NOT NULL,
   `nombreCliente` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `apellidoCliente` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `emailCliente` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -61,6 +83,24 @@ CREATE TABLE `factura` (
   `direccionCliente` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `numeroTarjetaCliente` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`idFactura`, `fecha`, `precioTotal`, `nombreCliente`, `apellidoCliente`, `emailCliente`, `ciudadCliente`, `codigoPostalCliente`, `direccionCliente`, `numeroTarjetaCliente`) VALUES
+(2, '2019-05-08 00:00:00', '6.00', 'dgf', 'fg', 'gf', 'gfds', 545, 'gs', 52),
+(30, '2019-05-22 13:43:35', '29.79', 'Bogdan', 'Berghie', 'bogdan337@gmail.com', 'Amorebieta-Etxano', 48340, 'particular san Pedro 5c 1d', 123123),
+(33, '2019-05-22 13:52:02', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(38, '2019-05-22 13:52:04', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(39, '2019-05-22 13:52:04', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(40, '2019-05-22 13:52:04', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(41, '2019-05-22 13:52:04', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(42, '2019-05-22 13:52:05', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(43, '2019-05-22 13:52:05', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(44, '2019-05-22 13:52:05', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(45, '2019-05-22 13:52:05', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5),
+(46, '2019-05-22 13:52:05', '32.88', 'ui', 'yu', 'yu', 'yu', 5, 'uy', 5);
 
 -- --------------------------------------------------------
 
@@ -71,8 +111,39 @@ CREATE TABLE `factura` (
 CREATE TABLE `productofinal` (
   `idFactura` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
+  `nombre` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `precio` double(10,2) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `total` double(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `productofinal`
+--
+
+INSERT INTO `productofinal` (`idFactura`, `idProducto`, `nombre`, `precio`, `cantidad`, `total`) VALUES
+(30, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 1, 8.99),
+(30, 6, 'EL PADRINO', 10.40, 2, 20.80),
+(33, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(33, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(38, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(38, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(39, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(39, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(40, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(40, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(41, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(41, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(42, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(42, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(43, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(43, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(44, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(44, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(45, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(45, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98),
+(46, 1, 'EL REY LEÃ?N', 14.90, 1, 14.90),
+(46, 2, 'EL SEÃ?OR DE LOS ANILLOS: LA COM', 8.99, 2, 17.98);
 
 -- --------------------------------------------------------
 
@@ -118,7 +189,9 @@ INSERT INTO `productos` (`idProducto`, `nombre`, `idCategoria`, `precio`, `descr
 (22, 'Marvel’s Spider-Man PS4', 4, '34.99', 'Protagonizado por uno de los superhéroes más emblemáticos del mundo, Marvel\'s Spider-Man incluye las habilidades acrobáticas, la improvisación y el lanzamiento de redes por los que es conocido el trepamuros, al tiempo que introduce nuevos elementos nunca antes vistos en un juego de Spider-Man. Muévete haciendo parkour y utilizando el entorno o prueba el nuevo sistema de combate y escenas repletas de acción. Este es un juego de Spider-Man como nunca antes has visto.', 'https://thumb.pccomponentes.com/w-530-530/articles/15/159008/01.jpg'),
 (23, 'UFC PS4', 4, '47.49', 'EA SPORTS™ UFC® 3 revoluciona los movimientos de lucha con Real Player Motion Tech, una nueva tecnología de animación que te ofrece los movimientos más fluidos y con mejor respuesta de todos los juegos deportivos. Hemos vuelto a capturar cada puñetazo, patada, bloqueo y contraataque con una tecnología de animación vanguardista para obtener el máximo realismo y respuesta, ofreciendo la experiencia de lucha más estratégica y competitiva de la historia de la franquicia.', 'https://thumb.pccomponentes.com/w-530-530/articles/14/149451/193883822.jpg'),
 (24, 'Grand Theft Auto V PS4', 4, '17.95', 'Vive la historia de Trevor, Michael y Franklin a través de Los Santos y el condado de Blaine. Juega la campaña principal o piérdete entre sus calles con las innumerables tareas y actividades opcionales a las que podrás acceder. Los Santos, una extensa y soleada metrópolis llena de gurús de autoayuda, aspirantes a estrellas y famosos en decadencia, en su día la envidia del mundo occidental, lucha ahora por mantenerse a flote en una era de incertidumbre económica y \"realities\" baratos. En medio de la confusión, tres criminales muy diferentes lo arriesgarán todo en una serie de atrevidos y peligrosos atracos que marcarán sus vidas.', 'https://thumb.pccomponentes.com/w-530-530/articles/7/71867/grand-theft-auto-v-ps4.jpg'),
-(25, 'Dark Souls Trilogy', 4, '44.95', 'Dark Souls es un videojuego de rol de acción, desarrollado por la empresa From Software para las plataformas PlayStation 3, Xbox 360 y Microsoft Windows, distribuido por Namco Bandai Games. Anteriormente conocido como Project Souls, es el segundo videojuego de la serie Souls.', 'https://images-na.ssl-images-amazon.com/images/I/81LeH2Fh8nL._SL1500_.jpg');
+(25, 'Dark Souls Trilogy', 4, '44.95', 'Dark Souls es un videojuego de rol de acción, desarrollado por la empresa From Software para las plataformas PlayStation 3, Xbox 360 y Microsoft Windows, distribuido por Namco Bandai Games. Anteriormente conocido como Project Souls, es el segundo videojuego de la serie Souls.', 'https://images-na.ssl-images-amazon.com/images/I/81LeH2Fh8nL._SL1500_.jpg'),
+(31, 'dhte', 4, '3.00', 'trw', 'ehry'),
+(33, 'los androides sueñan con ovejas electricas', 2, '8.00', 'mu largaaaa', 'https://imagessl5.casadellibro.com/a/l/t5/05/9788445000205.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -164,13 +237,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `idFactura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idFactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
@@ -180,7 +253,7 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `productofinal`
 --
 ALTER TABLE `productofinal`
-  ADD CONSTRAINT `productofinal_ibfk_1` FOREIGN KEY (`idFactura`) REFERENCES `factura` (`idFactura`),
+  ADD CONSTRAINT `productofinal_ibfk_1` FOREIGN KEY (`idFactura`) REFERENCES `factura` (`idFactura`) ON DELETE CASCADE,
   ADD CONSTRAINT `productofinal_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`idProducto`);
 
 --
