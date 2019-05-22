@@ -6,6 +6,7 @@ public class ProductoFinalClass extends Connect{
 	protected String nombre;
 	protected Double precio;
 	protected int cantidad;
+	protected Double total;
 	
 	
 	//Constructors
@@ -14,15 +15,15 @@ public class ProductoFinalClass extends Connect{
 	}
 
 
-	public ProductoFinalClass(int idFactura, int idProducto, String nombre, Double precio, int cantidad) {
+	public ProductoFinalClass(int idFactura, int idProducto, String nombre, Double precio, int cantidad, Double total) {
 		super();
 		this.idFactura = idFactura;
 		this.idProducto = idProducto;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
+		this.total = total;
 	}
-
 
 	public int getIdFactura() {
 		return idFactura;
@@ -72,5 +73,16 @@ public class ProductoFinalClass extends Connect{
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+	
+	
+	public Double getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
 	
 }

@@ -23,9 +23,9 @@ public class ProductoFinalModel extends ProductoFinalClass{
 	}
 
 
-	public ProductoFinalModel(int idFactura, int idProducto, String nombre, Double precio, int cantidad,
+	public ProductoFinalModel(int idFactura, int idProducto, String nombre, Double precio, int cantidad, Double total,
 		ArrayList<ProductoFinalClass> list) {
-	super(idFactura, idProducto, nombre, precio, cantidad);
+	super(idFactura, idProducto, nombre, precio, cantidad, total);
 	this.list = list;
 }
 
@@ -63,14 +63,15 @@ public class ProductoFinalModel extends ProductoFinalClass{
 		String mensaje="";
 		PreparedStatement pst;
 		try {
-			pst = (PreparedStatement) this.con.prepareStatement("call spInsertarLinea(?,?,?,?,?");
+			pst = (PreparedStatement) this.con.prepareStatement("call spInsertaLinea(?,?,?,?,?,?)");
 			
 			pst.setInt(1, this.idFactura);
 			pst.setInt(2, this.idProducto);
 			pst.setString(3, this.nombre);
 			pst.setDouble(4, this.precio);
 			pst.setInt(5, this.cantidad);
-			
+			pst.setDouble(6,  this.total);
+			System.out.println("TOTAL : "+ this.total);
 			pst.execute();
 			System.out.println("Linea insertada en la BBDD");
 			

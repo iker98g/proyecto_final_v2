@@ -16,14 +16,14 @@
 			//Sacar los datos del Atributo
 			ArrayList<ProductoClass> list=(ArrayList<ProductoClass>)request.getAttribute("list");
 		%>
-		<table class="table table-striped table-responsive h-50" >
+		<table class="table table-striped table-responsive h-50" style="width="200px" >
 		
 		<tr>
 			<th>IDPRODUCTO</th>
 			<th>NOMBRE</th>
 			<th>IDCATEGORIA</th>
 			<th>PRECIO</th>
-			<th>DESCRIPCION</th>
+			<!-- <th>DESCRIPCION</th> -->
 			<th>IMAGEN</th>
 			<th>ACCION</th>
 		</tr>
@@ -36,8 +36,8 @@
 				<td><%=list.get(i).getNombre() %></td>
 				<td><%=list.get(i).getIdCategoria() %></td>
 				<td><%=list.get(i).getPrecio() %></td>
-				<td><%=list.get(i).getDescripcion() %></td>
-				<td><%=list.get(i).getImagen() %></td>
+				<%-- <td style="width:10" nowrap><%=list.get(i).getDescripcion() %></td> --%>
+				<td><img src="<%=list.get(i).getImagen() %>" style="height:100px; width:100%"/></td>
 				<td> 
 				
 				<!-- Button trigger modal -->
@@ -58,7 +58,7 @@
 				      	<form action="cEjecutaModificarProducto" class="w-75 m-auto ">	
 	 						<div class="form-group">
 								<label for="idProducto">IdProducto </label>
-								<input readonly value="<%=list.get(i).getIdProducto() %>" class="form-control" type="text"  id="id" name="id" />
+								<input readonly value="<%=list.get(i).getIdProducto() %>" class="form-control" type="text"  id="idProducto" name="idProducto" />
 							</div>
 							 <div class="form-group">
 								<label for="nombre">Nombre </label>
@@ -66,7 +66,7 @@
 							</div>
 							<div class="form-group">
 								<label for="idCategoria">IdCategoria </label>
-								<input value="<%=list.get(i).getIdCategoria() %>" class="form-control" type="text"  id="id" name="id" />
+								<input value="<%=list.get(i).getIdCategoria() %>" class="form-control" type="text"  id="idCategoria" name="idCategoria" />
 							</div>
 							<div class="form-group">
 								<label for="precio">Precio </label>
@@ -74,7 +74,7 @@
 							</div>
 							<div class="form-group">
 								<label for="descripcion">Descripcion </label>
-								<input value="<%=list.get(i).getDescripcion() %>" class="form-control" type="text" id="descripcion" name="descripcion" />
+								<input value="<%=list.get(i).getDescripcion() %>" class="form-control" type="text" style="heigth:75px;" id="descripcion" name="descripcion" />
 							</div>
 							<div class="form-group">
 								<label for="imagen">Imagen </label>

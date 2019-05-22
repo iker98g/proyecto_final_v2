@@ -85,14 +85,14 @@ public class cGuardarFactura extends HttpServlet {
 		
 		
 		String nombre=request.getParameter("nombre");
-//		System.out.println("DATOS JSON nombreCliente : "+nombreCliente);
 		String apellido=request.getParameter("apellido");
 		String email=request.getParameter("email");
 		String ciudad=request.getParameter("ciudad");
 		int codigoPostal=Integer.parseInt(request.getParameter("codigoPostal"));
 		String direccion=request.getParameter("direccion");
 		int numeroTarjeta=Integer.parseInt(request.getParameter("numeroTarjeta"));
-
+		double subTotal=Double.parseDouble(request.getParameter("subTotal"));
+		System.out.println("TOTAL : " +subTotal);
 		FacturaModel myFactura=new FacturaModel();
 		myFactura.setNombreCliente(nombre);
 		myFactura.setApellidoCliente(apellido);
@@ -101,6 +101,7 @@ public class cGuardarFactura extends HttpServlet {
 		myFactura.setCodigoPostalCliente(codigoPostal);
 		myFactura.setDireccionCliente(direccion);
 		myFactura.setNumeroTarjetaCliente(numeroTarjeta);
+		myFactura.setPrecioTotal(subTotal);
 		
 		int idFactura=myFactura.insertarFactura();
 
@@ -127,6 +128,7 @@ public class cGuardarFactura extends HttpServlet {
 					myLinea.setNombre(compra.getString("nombre"));
 					myLinea.setPrecio(compra.getDouble("precio"));
 					myLinea.setCantidad(compra.getInt("cantidad"));
+					myLinea.setTotal(compra.getDouble("total"));
 					
 					myLinea.insertarLinea();			
 					
@@ -134,11 +136,12 @@ public class cGuardarFactura extends HttpServlet {
 					ids = ids+ " " + compra.getString("nombre");
 					ids = ids+ " " + compra.getDouble("precio");
 					ids = ids+ " " + compra.getInt("cantidad");
+					ids = ids+ " " + compra.getDouble("total");
 					
 				}
 		}
 		response.setHeader("Access-Control-Allow-Origin","*"); //jsonp deia denean ez da behar
-		response.setContentType("application/json");
+		response.setContentType("text/plain;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
 		PrintWriter out = response.getWriter();

@@ -105,7 +105,6 @@ public class FacturaModel extends FacturaClass{
 			pst.setInt(6, this.codigoPostalCliente);
 			pst.setString(7, this.direccionCliente);
 			pst.setInt(8, this.numeroTarjetaCliente);
-			
 			ResultSet rs=pst.executeQuery();
 			
 			if (rs.next()) {
