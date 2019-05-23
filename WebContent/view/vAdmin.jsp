@@ -11,10 +11,10 @@
 		<div class="botones w-75 m-auto">
 			
 			<a class="btn btn-primary d-block m-2" href="<%=request.getContextPath()%>/cVerFactura">Ver Facturas</a>
-			<a class="btn btn-primary d-block m-2" href="cBorrarFactura">Borrar Factura</a>
-			<a class="btn btn-primary d-block m-2" href="cAniadirProducto">Añadir Producto</a>
-			<a class="btn btn-primary d-block m-2" href="cBorrarProducto">Borrar Producto</a>
-			<a class="btn btn-primary d-block m-2" href="cModificarProducto">Modificar Producto</a>
+			<a class="btn btn-primary d-block m-2" href="<%=request.getContextPath()%>/cBorrarFactura">Borrar Factura</a>
+			<a class="btn btn-primary d-block m-2" href="<%=request.getContextPath()%>/cAniadirProducto">Añadir Producto</a>
+			<a class="btn btn-primary d-block m-2" href="<%=request.getContextPath()%>/cBorrarProducto">Borrar Producto</a>
+			<a class="btn btn-primary d-block m-2" href="<%=request.getContextPath()%>/cModificarProducto">Modificar Producto</a>
 		</div>
 	</div>
 </body>
