@@ -10,7 +10,7 @@
 		<h1 class="my-5 w-75 mx-auto" >ADMINISTRADOR</h1>
 		<div class="botones w-75 m-auto">
 			
-			<a class="btn btn-primary d-block m-2" href="cVerFactura">Ver Facturas</a>
+			<a class="btn btn-primary d-block m-2" href="<%=request.getContextPath()%>/cVerFactura">Ver Facturas</a>
 			<a class="btn btn-primary d-block m-2" href="cBorrarFactura">Borrar Factura</a>
 			<a class="btn btn-primary d-block m-2" href="cAniadirProducto">Añadir Producto</a>
 			<a class="btn btn-primary d-block m-2" href="cBorrarProducto">Borrar Producto</a>
