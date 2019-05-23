@@ -10,7 +10,7 @@ $(document).ready(function () {
 		var htmlCode = "";
 		for (let i = 0; i < datos.length; i++) {
 
-			htmlCode += '<div class=" col-md-2 card-producto" data-idcategoria="' + datos[i].idCategoria + '">'
+			htmlCode += '<div class="col-sm-6 col-md-4 col-lg-2 card-producto" data-idcategoria="' + datos[i].idCategoria + '">'
 			htmlCode += '<div class="casillas card mb-1 shadow-sm mt-3">';
 			htmlCode += '<button  data-descripcion="' + datos[i].descripcion+ '"data-imagen="' + datos[i].imagen + '"data-idproducto="' + datos[i].idProducto + '" data-nombre="' + datos[i].nombre + '" ' + ' data-precio="' + datos[i].precio + '" class="ver-modal" style="background: url(' + datos[i].imagen + ') no-repeat;background-size: cover; background-position: center;height: 225px; width: auto;   " class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">';
 			htmlCode += '</button>';
